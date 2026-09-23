@@ -229,12 +229,14 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
   <section class="step">
     <div class="head"><span class="num">4</span><h2>Your git identity<span class="goal">Sign your work</span></h2></div>
     <ol class="do">
-      <li><span class="act">Run both, with your own name and your GitHub email:</span>
+      <li><span class="act">Run all three, with your own name and your GitHub email:</span>
         <div class="cmd"><pre>git config --global user.name "Your Name"</pre><button class="copy" type="button">Copy</button></div>
-        <div class="cmd"><pre>git config --global user.email "you@example.com"</pre><button class="copy" type="button">Copy</button></div></li>
+        <div class="cmd"><pre>git config --global user.email "you@example.com"</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>git config --global init.defaultBranch main</pre><button class="copy" type="button">Copy</button></div></li>
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
       <p>Every saved version records who made it, and git won't save until it knows. <code>--global</code> sets it once for the whole computer. Using your GitHub email links your work to your account.</p>
+      <p><b>The <code>main</code> line:</b> older versions of git name a new project's first branch <code>master</code>, while GitHub and Vercel now expect <code>main</code>. This makes <code>main</code> the default for every future project.</p>
     </div></details>
   </section>
 
@@ -403,13 +405,15 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
   <section class="step">
     <div class="head"><span class="num">4</span><h2>Your git identity<span class="goal">Sign your work</span></h2></div>
     <ol class="do">
-      <li><span class="act">Run all three, with your own name and your GitHub email:</span>
+      <li><span class="act">Run all four, with your own name and your GitHub email:</span>
         <div class="cmd"><pre>git config --global user.name "Your Name"</pre><button class="copy" type="button">Copy</button></div>
         <div class="cmd"><pre>git config --global user.email "you@example.com"</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>git config --global init.defaultBranch main</pre><button class="copy" type="button">Copy</button></div>
         <div class="cmd"><pre>git config --global core.autocrlf true</pre><button class="copy" type="button">Copy</button></div></li>
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
       <p>Every saved version records who made it, and git won't save until it knows. <code>--global</code> sets it once for the whole computer. Using your GitHub email links your work to your account.</p>
+      <p><b>The <code>main</code> line:</b> older versions of git name a new project's first branch <code>master</code>, while GitHub and Vercel now expect <code>main</code>. This makes <code>main</code> the default for every future project.</p>
       <p>The third line handles a Windows/Mac difference in how lines of text end, so files stay clean when you work with Mac users.</p>
     </div></details>
   </section>
