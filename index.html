@@ -261,9 +261,18 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
     <ol class="do">
       <li><span class="act">Install VS Code:</span>
         <div class="cmd"><pre>brew install --cask visual-studio-code</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Turn on word wrap</span> so long lines fit the window: open VS Code, go to <b>Settings</b> (<kbd>⌘</kbd> <kbd>,</kbd>), search <b>word wrap</b>, set it to <b>on</b>.</li>
+      <li><span class="act">Install Prettier, which tidies code layout:</span>
+        <div class="cmd"><pre>code --install-extension esbenp.prettier-vscode</pre><button class="copy" type="button">Copy</button></div></li>
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
       <p>Claude writes most of the code, but you still need to read what changed and make small edits. <code>--cask</code> is Homebrew's way of installing normal apps with a window.</p>
+      <p><b>Word wrap:</b> web files often have very long lines that run off the screen. Wrapping folds them to fit, so you can read without scrolling sideways. Quick toggle: <kbd>⌥ Option + Z</kbd>.</p>
+      <p><b>Prettier</b> fixes indentation and spacing so code is easier to scan. Use it on any open file with <kbd>⌥ Option + Shift + F</kbd> (“Format Document”). If VS Code asks which formatter to use, choose <b>Prettier</b>.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <p><b><code>code</code> not found?</b> Open VS Code, press <kbd>⌘</kbd> <kbd>Shift</kbd> <kbd>P</kbd>, type <b>shell command</b>, choose <b>Install ‘code’ command in PATH</b>, then open a new Terminal.</p>
+      <p>Or install Prettier by hand: in VS Code open <b>Extensions</b> (the four-squares icon on the left), search <b>Prettier</b>, and install <b>Prettier - Code formatter</b>.</p>
     </div></details>
   </section>
 
@@ -442,9 +451,18 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
     <ol class="do">
       <li><span class="act">Install VS Code:</span>
         <div class="cmd"><pre>winget install Microsoft.VisualStudioCode</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Turn on word wrap</span> so long lines fit the window: open VS Code, go to <b>Settings</b> (<kbd>Ctrl</kbd> <kbd>,</kbd>), search <b>word wrap</b>, set it to <b>on</b>.</li>
+      <li><span class="act">Install Prettier, which tidies code layout (open a new Terminal first):</span>
+        <div class="cmd"><pre>code --install-extension esbenp.prettier-vscode</pre><button class="copy" type="button">Copy</button></div></li>
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
       <p>Claude writes most of the code, but you still need to read what changed and make small edits. Tip: if the installer shows it, tick <b>“Add ‘Open with Code’ action”</b> so you can right-click a folder to open it.</p>
+      <p><b>Word wrap:</b> web files often have very long lines that run off the screen. Wrapping folds them to fit, so you can read without scrolling sideways. Quick toggle: <kbd>Alt + Z</kbd>.</p>
+      <p><b>Prettier</b> fixes indentation and spacing so code is easier to scan. Use it on any open file with <kbd>Shift + Alt + F</kbd> (“Format Document”). If VS Code asks which formatter to use, choose <b>Prettier</b>.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <p><b><code>code</code> not found?</b> Close all Terminal windows and open a new one. If it still fails, restart the PC.</p>
+      <p>Or install Prettier by hand: in VS Code open <b>Extensions</b> (the four-squares icon on the left), search <b>Prettier</b>, and install <b>Prettier - Code formatter</b>.</p>
     </div></details>
   </section>
 
