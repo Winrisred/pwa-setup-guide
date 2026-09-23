@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Step-by-step guide to installing the tools needed to build PWAs on Mac or Windows.">
+<title>PWA Setup Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500&display=swap">
+<style>
+:root{
+  --bg:#f5f6f4; --paper:#ffffff; --ink:#1d2322; --muted:#667270; --line:#dde2df;
+  --accent:#2f6f66; --accent-soft:#e3efec; --code-bg:#1f2826; --code-ink:#e6efeb; --code-dim:#8fa39d;
+  --note-bg:#eef0f3; --note-ink:#4f5a66; --note-line:#c9cfd8;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --serif:"Newsreader",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141918; --paper:#1b2120; --ink:#e3e9e6; --muted:#9aa8a4; --line:#2c3533;
+  --accent:#7fbfb3; --accent-soft:#1f302d; --code-bg:#0c100f; --code-ink:#e6efeb; --code-dim:#7d918b;
+  --note-bg:#1b1f25; --note-ink:#aab4c0; --note-line:#343c47; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#141918; --paper:#1b2120; --ink:#e3e9e6; --muted:#9aa8a4; --line:#2c3533;
+  --accent:#7fbfb3; --accent-soft:#1f302d; --code-bg:#0c100f; --code-ink:#e6efeb; --code-dim:#7d918b;
+  --note-bg:#1b1f25; --note-ink:#aab4c0; --note-line:#343c47; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);padding:0 16px}
+main{max-width:720px;margin:0 auto;padding-block:40px 80px}
+h1,h2{font-family:var(--serif);font-weight:500;text-wrap:balance;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.1;margin-bottom:10px}
+.lede{color:var(--muted);margin:0 0 24px;max-width:58ch}
+code{font:.88em var(--mono);background:var(--accent-soft);padding:1px 5px;border-radius:3px}
+p{margin:0 0 10px;max-width:65ch}
+ul{margin:0 0 10px;padding-left:20px} li{margin-bottom:6px}
+
+.switch{display:inline-flex;gap:4px;padding:4px;background:var(--paper);border:1px solid var(--line);border-radius:8px;margin:0 0 28px}
+.switch button{font:500 .9rem var(--sans);color:var(--muted);background:transparent;border:0;border-radius:5px;padding:7px 18px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--accent);color:var(--paper)}
+button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.88rem;color:var(--muted);margin:0 0 20px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:22px;height:14px;border-radius:3px;display:inline-block}
+.sw.do{background:var(--code-bg)}
+.sw.more{background:var(--note-bg);border:1px dashed var(--note-line)}
+
+/* how to run primer */
+.primer{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin:0 0 8px}
+.primer h3{font:600 .95rem var(--sans);margin:0 0 8px}
+.primer ol{margin:0;padding-left:20px}
+.primer li{margin-bottom:4px}
+kbd{font:500 .8rem var(--mono);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--bg)}
+
+/* step */
+.step{padding-block:30px;border-top:1px solid var(--line)}
+.step:first-of-type{margin-top:28px}
+.head{display:flex;gap:14px;align-items:baseline;margin-bottom:14px}
+.num{flex:none;font:600 .85rem var(--mono);color:var(--paper);background:var(--accent);border-radius:50%;width:30px;height:30px;display:grid;place-items:center;transform:translateY(-3px)}
+.head h2{font-size:1.45rem;line-height:1.2}
+.head .goal{display:block;font:400 .92rem var(--sans);color:var(--muted);margin-top:2px}
+
+/* DO: actions */
+.do{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.do li{margin:0}
+.act{font-weight:500}
+.cmd{position:relative;background:var(--code-bg);color:var(--code-ink);border-radius:6px;overflow-x:auto;margin-top:6px}
+.cmd pre{margin:0;padding:13px 78px 13px 16px;font:500 .9rem/1.5 var(--mono);white-space:pre}
+.cmd pre::before{content:"$ ";color:var(--code-dim)}
+[data-os="win"] .cmd pre::before{content:"> "}
+.copy{position:absolute;top:8px;right:8px;font:500 .72rem var(--mono);color:var(--code-ink);background:transparent;border:1px solid #445550;border-radius:4px;padding:4px 10px;cursor:pointer}
+.copy:hover{border-color:var(--code-dim)}
+.ok{font-size:.9rem;color:var(--accent);margin-top:6px}
+.ok::before{content:"✓ ";font-weight:600}
+
+/* MORE: explanations */
+details.more{margin-top:14px;background:var(--note-bg);border:1px dashed var(--note-line);border-radius:6px;color:var(--note-ink);font-size:.93rem}
+details.more+details.more{margin-top:8px}
+details.more summary{cursor:pointer;padding:9px 14px;font-weight:500;list-style:none;display:flex;align-items:center;gap:8px}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";font:600 1rem var(--mono);width:14px}
+details.more[open] summary::before{content:"–"}
+details.more .in{padding:0 16px 12px 36px}
+details.more b{color:var(--ink);font-weight:600}
+details.more code{background:transparent;border:1px solid var(--note-line)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0 0 10px}
+dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
+
+.chain{margin-top:36px;padding:22px;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.chain h2{font-size:1.25rem;margin-bottom:12px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:.84rem var(--mono)}
+.flow span{background:var(--accent-soft);padding:4px 10px;border-radius:4px}
+.flow i{font-style:normal;color:var(--muted)}
+.tip{margin:14px 0 0;color:var(--muted);font-size:.93rem}
+@media (max-width:520px){dl{grid-template-columns:1fr}dd{margin-bottom:6px}}
+@media (prefers-reduced-motion:no-preference){details.more .in{animation:fade .15s ease-out}@keyframes fade{from{opacity:0}}}
+.accounts{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin:0 0 12px}
+.accounts h3{font:600 .95rem var(--sans);margin:0 0 4px}
+.accounts .sub{color:var(--muted);font-size:.9rem;margin:0 0 12px}
+.acc{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.acc li{display:grid;grid-template-columns:88px 1fr auto;gap:4px 14px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line);margin:0}
+.acc li:first-child{border-top:0}
+.acc .n{font-weight:600}
+.acc .d{font-size:.92rem}
+.tag{font:500 .72rem var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.tag.req{background:var(--accent);color:var(--paper)}
+.tag.rec{border:1px solid var(--accent);color:var(--accent)}
+@media (max-width:520px){.acc li{grid-template-columns:1fr auto}.acc .d{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main>
+<div class="switch" role="group" aria-label="Choose your computer"><button type="button" data-os="mac" aria-pressed="true">Mac</button><button type="button" data-os="win" aria-pressed="false">Windows</button></div>
+
+<!-- ================= MAC ================= -->
+<div id="os-mac">
+  <h1>Set up your Mac to build PWAs</h1>
+  <p class="lede">Seven steps, done once. Follow the dark boxes in order; open the grey ones only if you're curious or stuck.</p>
+
+  <div class="legend">
+    <span><i class="sw do"></i>Do this: run it in Terminal</span>
+    <span><i class="sw more"></i>Optional: why, and if your screen looks different</span>
+  </div>
+
+  <div class="primer">
+    <h3>How to run a command</h3>
+    <ol>
+      <li>Click <b>Copy</b> on a dark box.</li>
+      <li>In Terminal, paste on the last line (after the <code>%</code>): <kbd>⌘</kbd> <kbd>V</kbd></li>
+      <li>Press <kbd>Enter</kbd> and wait until the <code>%</code> comes back.</li>
+    </ol>
+  </div>
+
+
+  <div class="accounts">
+    <h3>Accounts to create first</h3>
+    <p class="sub">Do these in a web browser, in this order, before step 1.</p>
+    <ul class="acc">
+      <li><span class="n">Google</span><span class="d">A <b>new</b> account just for projects, not a personal, school or work one. Turn on 2-Step Verification. Use it to sign up for the others.</span><span class="tag rec">Recommended</span></li>
+      <li><span class="n">GitHub</span><span class="d">Stores your code online. At <b>github.com</b>, sign up with your project Google account.</span><span class="tag req">Required</span></li>
+      <li><span class="n">Vercel</span><span class="d">Publishes your PWA. At <b>vercel.com</b>, choose <b>Continue with GitHub</b>.</span><span class="tag req">Required</span></li>
+      <li><span class="n">Claude</span><span class="d">Your AI assistant. At <b>claude.ai</b>, sign in with your project Google account. Claude Code needs a <b>paid plan</b> (Pro or higher).</span><span class="tag req">Required</span></li>
+    </ul>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p><b>Google</b> isn't strictly needed, but one account for everything means one password and no “which email did I use?” later. Many simple PWAs also store their data in Google Sheets or Drive.</p>
+      <p>Avoid school or work accounts: they often block sign-ins to other services and disappear when you leave.</p>
+      <p><b>Ages:</b> Google and GitHub require 13+, Claude requires 18+.</p>
+    </div></details>
+  </div>
+
+  <section class="step">
+    <div class="head"><span class="num">1</span><h2>Developer basics<span class="goal">Open Terminal and install Apple's tools</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Open Terminal:</span> press <kbd>⌘</kbd> <kbd>Space</kbd>, type <b>Terminal</b>, press <kbd>Enter</kbd>.</li>
+      <li><span class="act">Run this, then click Install in the window that appears:</span>
+        <div class="cmd"><pre>xcode-select --install</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p>macOS doesn't come with developer tools. This Apple package adds <b>compilers</b> (which build programs on your Mac) and <b>git</b>. The next step, Homebrew, won't install without it.</p>
+      <p><b>Terminal</b> is where you type commands. Most developer tools have no app window, so this is where you use them.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <p>If it says <code>command line tools are already installed</code>, great: skip to step 2.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">2</span><h2>Homebrew<span class="goal">The tool that installs all the other tools</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Run this.</span> It asks for your Mac password (you won't see it as you type; that's normal) and takes a few minutes.
+        <div class="cmd"><pre>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">When it finishes, run these two, one at a time:</span>
+        <div class="cmd"><pre>echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>eval "$(/opt/homebrew/bin/brew shellenv)"</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Check it worked:</span>
+        <div class="cmd"><pre>brew --version</pre><button class="copy" type="button">Copy</button></div>
+        <p class="ok">A version number means you're done.</p></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p><b>Homebrew</b> is like an App Store for developer tools: <code>brew install</code> to add, <code>brew upgrade</code> to update everything, <code>brew uninstall</code> to remove.</p>
+      <p><b>The two extra lines:</b> Terminal only finds commands in folders on a list called <b>PATH</b>. Homebrew puts its tools in a new folder, <code>/opt/homebrew/bin</code>, that isn't on the list yet.</p>
+      <dl>
+        <dt>First line</dt><dd>Saves the setting in a hidden file Terminal reads every time it opens, so it's permanent.</dd>
+        <dt>Second line</dt><dd>Applies it to the window that's already open.</dd>
+      </dl>
+      <p>Commands that work usually print nothing. That's normal.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <ul>
+        <li>At the end the installer prints <b>“Next steps”</b> with the same two lines, but with <b>your username</b> instead of <code>~</code>. Both versions do the same thing; use either one.</li>
+        <li>Newer versions may show a <b>third</b> line (<code>echo &gt;&gt; …/.zprofile</code>). It just adds a blank line and is harmless.</li>
+        <li><b>Older Intel Mac:</b> you may see no “Next steps” at all. Skip the two lines; <code>brew --version</code> will already work.</li>
+        <li><b><code>command not found: brew</code></b>: the two lines weren't run yet, or you're in a different window. Run them again in this window.</li>
+      </ul>
+      <p>Which Mac do you have? Apple menu → <b>About This Mac</b>: “Chip: Apple M…” or “Processor: Intel…”.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">3</span><h2>git, Node and Python<span class="goal">The working materials</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Install all three:</span>
+        <div class="cmd"><pre>brew install git node python</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Check them:</span>
+        <div class="cmd"><pre>node -v && git --version && python3 --version</pre><button class="copy" type="button">Copy</button></div>
+        <p class="ok">Three version numbers means you're done.</p></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <dl>
+        <dt>git</dt><dd>Saves every version of your project and sends it to GitHub. Vercel publishes from git.</dd>
+        <dt>Node</dt><dd>Runs JavaScript tools like Claude Code and Vercel. Comes with <b>npm</b>, which installs JavaScript tools (Homebrew = system tools, npm = JavaScript tools).</dd>
+        <dt>Python</dt><dd>Gives you a quick local web server for testing.</dd>
+      </dl>
+      <p><b>Why a server?</b> A PWA doesn't fully work if you just double-click <code>index.html</code>. It needs a web address, and <code>localhost</code> counts. Inside a project folder, <code>python3 -m http.server 8000</code> makes it available at <code>http://localhost:8000</code>.</p>
+    </div></details>
+    <details class="more"><summary>Terminal stopped responding?</summary><div class="in">
+      <p><b>A running server keeps its Terminal window busy.</b> While it runs, anything you type there is ignored, so commands like <code>git</code> won't run.</p>
+      <ul>
+        <li><b>Free:</b> the last line ends with <code>%</code> and the cursor is waiting.</li>
+        <li><b>Busy:</b> the last line is server output, like <code>Serving HTTP on…</code> or <code>GET / 200</code>.</li>
+      </ul>
+      <p><b>To stop the server:</b> click in that window and press <kbd>Ctrl</kbd> <kbd>C</kbd>. The <code>%</code> comes back.</p>
+      <p><b>Better habit: use two tabs.</b> Open a new one with <kbd>⌘</kbd> <kbd>T</kbd>. Tab 1 runs the server; tab 2 is for everything else.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">4</span><h2>Your git identity<span class="goal">Sign your work</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Run both, with your own name and your GitHub email:</span>
+        <div class="cmd"><pre>git config --global user.name "Your Name"</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>git config --global user.email "you@example.com"</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p>Every saved version records who made it, and git won't save until it knows. <code>--global</code> sets it once for the whole computer. Using your GitHub email links your work to your account.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">5</span><h2>GitHub and Claude Code<span class="goal">Connect Terminal to your accounts</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Connect Terminal to GitHub,</span> and answer the questions it asks (choose GitHub.com, HTTPS, log in with a web browser):
+        <div class="cmd"><pre>brew install gh</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>gh auth login</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Install Claude Code:</span>
+        <div class="cmd"><pre>npm install -g @anthropic-ai/claude-code</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p><b>GitHub</b> stores your code online. <code>gh auth login</code> signs you in once, so you're never asked for a password again.</p>
+      <p><b>Vercel</b> publishes your PWA with HTTPS. Once a project is imported, every change you send to GitHub goes live automatically.</p>
+      <p><b>Claude Code</b> is the AI assistant that edits your files. It's installed with npm because it's a Node program, which is why Node came first. <code>-g</code> means you can use it from any folder. You can also use the Claude desktop app instead.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">6</span><h2>A code editor<span class="goal">See and edit your files</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Install VS Code:</span>
+        <div class="cmd"><pre>brew install --cask visual-studio-code</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p>Claude writes most of the code, but you still need to read what changed and make small edits. <code>--cask</code> is Homebrew's way of installing normal apps with a window.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">7</span><h2>A home for your projects<span class="goal">One folder for everything</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Create it:</span>
+        <div class="cmd"><pre>mkdir -p ~/Documents/my-projects</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Rules to keep it tidy</summary><div class="in">
+      <ul>
+        <li><b>One project = one folder = one GitHub repo = one Vercel site.</b></li>
+        <li><b>No spaces or accents in names:</b> <code>my-app</code>, not <code>My App</code>. Terminal handles spaces badly.</li>
+      </ul>
+    </div></details>
+  </section>
+
+  <div class="chain">
+    <h2>How it fits together</h2>
+    <div class="flow"><span>Apple tools</span><i>→</i><span>Homebrew</span><i>→</i><span>git · Node · Python</span><i>→</i><span>npm</span><i>→</i><span>Claude Code</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
+    <p class="tip"><b>When something fails,</b> check the step before it. Each one depends on the last.</p>
+  </div>
+</div>
+
+<!-- ================= WINDOWS ================= -->
+<div id="os-win" hidden>
+  <h1>Set up your Windows PC to build PWAs</h1>
+  <p class="lede">Seven steps, done once. Follow the dark boxes in order; open the grey ones only if you're curious or stuck.</p>
+
+  <div class="legend">
+    <span><i class="sw do"></i>Do this: run it in Terminal</span>
+    <span><i class="sw more"></i>Optional: why, and if your screen looks different</span>
+  </div>
+
+  <div class="primer">
+    <h3>How to run a command</h3>
+    <ol>
+      <li>Click <b>Copy</b> on a dark box.</li>
+      <li>In Terminal, paste on the last line (after the <code>&gt;</code>): <kbd>Ctrl</kbd> <kbd>V</kbd> or right-click.</li>
+      <li>Press <kbd>Enter</kbd> and wait until the <code>&gt;</code> comes back.</li>
+      <li><b>After installing anything, close Terminal and open a new one.</b></li>
+    </ol>
+  </div>
+
+
+  <div class="accounts">
+    <h3>Accounts to create first</h3>
+    <p class="sub">Do these in a web browser, in this order, before step 1.</p>
+    <ul class="acc">
+      <li><span class="n">Google</span><span class="d">A <b>new</b> account just for projects, not a personal, school or work one. Turn on 2-Step Verification. Use it to sign up for the others.</span><span class="tag rec">Recommended</span></li>
+      <li><span class="n">GitHub</span><span class="d">Stores your code online. At <b>github.com</b>, sign up with your project Google account.</span><span class="tag req">Required</span></li>
+      <li><span class="n">Vercel</span><span class="d">Publishes your PWA. At <b>vercel.com</b>, choose <b>Continue with GitHub</b>.</span><span class="tag req">Required</span></li>
+      <li><span class="n">Claude</span><span class="d">Your AI assistant. At <b>claude.ai</b>, sign in with your project Google account. Claude Code needs a <b>paid plan</b> (Pro or higher).</span><span class="tag req">Required</span></li>
+    </ul>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p><b>Google</b> isn't strictly needed, but one account for everything means one password and no “which email did I use?” later. Many simple PWAs also store their data in Google Sheets or Drive.</p>
+      <p>Avoid school or work accounts: they often block sign-ins to other services and disappear when you leave.</p>
+      <p><b>Ages:</b> Google and GitHub require 13+, Claude requires 18+.</p>
+    </div></details>
+  </div>
+
+  <section class="step">
+    <div class="head"><span class="num">1</span><h2>Terminal<span class="goal">Open it and allow installed tools to run</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Open Terminal:</span> press the <kbd>Windows</kbd> key, type <b>Terminal</b>, press <kbd>Enter</kbd>.</li>
+      <li><span class="act">Run this once:</span>
+        <div class="cmd"><pre>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p><b>Terminal</b> is where you type commands; inside it you use <b>PowerShell</b>. Most developer tools have no app window, so this is where you use them.</p>
+      <p>By default PowerShell blocks scripts, which also blocks tools like Claude Code. This allows scripts you installed yourself, for your user only.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <ul>
+        <li><b>Windows 10:</b> if Terminal isn't found, install <b>Windows Terminal</b> from the Microsoft Store.</li>
+        <li>The tab may say <em>Command Prompt</em> instead of PowerShell. Pick <b>PowerShell</b> from the <b>⌄</b> menu next to the tabs.</li>
+        <li>If it asks <code>Do you want to change the execution policy?</code>, type <code>Y</code> and press Enter.</li>
+      </ul>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">2</span><h2>winget<span class="goal">The tool that installs all the other tools</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Check it's there. It comes with Windows:</span>
+        <div class="cmd"><pre>winget --version</pre><button class="copy" type="button">Copy</button></div>
+        <p class="ok">A version number means you're done.</p></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p><b>winget</b> is Microsoft's App Store for developer tools: <code>winget install</code> to add, <code>winget upgrade --all</code> to update everything, <code>winget uninstall</code> to remove.</p>
+      <p><b>About PATH:</b> Terminal only finds commands in folders on a list called PATH. On Windows, installers add themselves to that list, so <b>there's nothing to copy</b>. But Terminal only reads the list when it opens. That's why you open a new one after each install.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <ul>
+        <li><b><code>winget</code> is not recognized</b>: common on Windows 10. Update <b>App Installer</b> from the Microsoft Store, then open a new Terminal.</li>
+        <li>The “not recognized” message is worded differently in PowerShell and Command Prompt. Both mean the same: open a new Terminal, or the tool isn't installed yet.</li>
+      </ul>
+      <p>Which Windows do you have? Press <kbd>Windows</kbd> + <kbd>R</kbd>, type <code>winver</code>, press Enter.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">3</span><h2>git, Node and Python<span class="goal">The working materials</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Install them, one at a time:</span>
+        <div class="cmd"><pre>winget install Git.Git</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>winget install OpenJS.NodeJS.LTS</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>winget install Python.Python.3.12</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Close Terminal, open a new one, and check them:</span>
+        <div class="cmd"><pre>node -v; git --version; py --version</pre><button class="copy" type="button">Copy</button></div>
+        <p class="ok">Three version numbers means you're done.</p></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <dl>
+        <dt>git</dt><dd>Saves every version of your project and sends it to GitHub. Vercel publishes from git.</dd>
+        <dt>Node</dt><dd>Runs JavaScript tools like Claude Code and Vercel. Comes with <b>npm</b>, which installs JavaScript tools. LTS = the stable version.</dd>
+        <dt>Python</dt><dd>Gives you a quick local web server for testing.</dd>
+      </dl>
+      <p><b>Why a server?</b> A PWA doesn't fully work if you just double-click <code>index.html</code>. It needs a web address, and <code>localhost</code> counts. Inside a project folder, <code>py -m http.server 8000</code> makes it available at <code>http://localhost:8000</code>.</p>
+    </div></details>
+    <details class="more"><summary>Terminal stopped responding?</summary><div class="in">
+      <p><b>A running server keeps its Terminal window busy.</b> While it runs, anything you type there is ignored, so commands like <code>git</code> won't run.</p>
+      <ul>
+        <li><b>Free:</b> the last line ends with <code>&gt;</code> and the cursor is waiting.</li>
+        <li><b>Busy:</b> the last line is server output, like <code>Serving HTTP on…</code> or <code>GET / 200</code>.</li>
+      </ul>
+      <p><b>To stop the server:</b> click in that window and press <kbd>Ctrl</kbd> <kbd>C</kbd>. The <code>&gt;</code> comes back.</p>
+      <p><b>Better habit: use two tabs.</b> Open a new one with <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>T</kbd>. Tab 1 runs the server; tab 2 is for everything else.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <ul>
+        <li>A <b>“Do you want to allow this app to make changes?”</b> box may appear. Click <b>Yes</b>. Some installs don't ask; both are normal.</li>
+        <li>Use <code>py</code>, not <code>python</code>. On many PCs <code>python</code> opens the Microsoft Store instead.</li>
+        <li>Still “not recognized” in a new Terminal? Close <b>all</b> Terminal windows (including inside VS Code), or restart the PC.</li>
+      </ul>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">4</span><h2>Your git identity<span class="goal">Sign your work</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Run all three, with your own name and your GitHub email:</span>
+        <div class="cmd"><pre>git config --global user.name "Your Name"</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>git config --global user.email "you@example.com"</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>git config --global core.autocrlf true</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p>Every saved version records who made it, and git won't save until it knows. <code>--global</code> sets it once for the whole computer. Using your GitHub email links your work to your account.</p>
+      <p>The third line handles a Windows/Mac difference in how lines of text end, so files stay clean when you work with Mac users.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">5</span><h2>GitHub and Claude Code<span class="goal">Connect Terminal to your accounts</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Connect Terminal to GitHub.</span> Install, open a new Terminal, then log in and answer the questions (GitHub.com, HTTPS, log in with a web browser):
+        <div class="cmd"><pre>winget install GitHub.cli</pre><button class="copy" type="button">Copy</button></div>
+        <div class="cmd"><pre>gh auth login</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Install Claude Code:</span>
+        <div class="cmd"><pre>npm install -g @anthropic-ai/claude-code</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p><b>GitHub</b> stores your code online. <code>gh auth login</code> signs you in once, so you're never asked for a password again.</p>
+      <p><b>Vercel</b> publishes your PWA with HTTPS. Once a project is imported, every change you send to GitHub goes live automatically.</p>
+      <p><b>Claude Code</b> is the AI assistant that edits your files. It's installed with npm because it's a Node program. <code>-g</code> means you can use it from any folder. You can also use the Claude desktop app instead.</p>
+    </div></details>
+    <details class="more"><summary>Screen looks different?</summary><div class="in">
+      <p><b>“running scripts is disabled”</b>: the command from step 1 is missing. Run it, then try again.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">6</span><h2>A code editor<span class="goal">See and edit your files</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Install VS Code:</span>
+        <div class="cmd"><pre>winget install Microsoft.VisualStudioCode</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Why?</summary><div class="in">
+      <p>Claude writes most of the code, but you still need to read what changed and make small edits. Tip: if the installer shows it, tick <b>“Add ‘Open with Code’ action”</b> so you can right-click a folder to open it.</p>
+    </div></details>
+  </section>
+
+  <section class="step">
+    <div class="head"><span class="num">7</span><h2>A home for your projects<span class="goal">One folder for everything</span></h2></div>
+    <ol class="do">
+      <li><span class="act">Create it:</span>
+        <div class="cmd"><pre>mkdir $HOME\projects</pre><button class="copy" type="button">Copy</button></div></li>
+    </ol>
+    <details class="more"><summary>Rules to keep it tidy</summary><div class="in">
+      <ul>
+        <li><b>One project = one folder = one GitHub repo = one Vercel site.</b></li>
+        <li><b>Keep it out of OneDrive.</b> Windows often syncs Documents and Desktop, which interferes with git. The folder above is safe.</li>
+        <li><b>No spaces or accents in names:</b> <code>my-app</code>, not <code>My App</code>.</li>
+      </ul>
+    </div></details>
+  </section>
+
+  <div class="chain">
+    <h2>How it fits together</h2>
+    <div class="flow"><span>Terminal</span><i>→</i><span>winget</span><i>→</i><span>git · Node · Python</span><i>→</i><span>npm</span><i>→</i><span>Claude Code</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
+    <p class="tip"><b>When something fails,</b> check the step before it. Each one depends on the last.</p>
+  </div>
+</div>
+</main>
+
+<script>
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  const pre=b.previousElementSibling, t=pre.textContent;
+  const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500)};
+  try{navigator.clipboard.writeText(t).then(done,()=>sel(pre))}catch(e){sel(pre)}
+}));
+function sel(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+const panes={mac:document.getElementById('os-mac'),win:document.getElementById('os-win')};
+function setOS(os,save){for(const k in panes)panes[k].hidden=k!==os;
+ document.querySelectorAll('.switch button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.os===os));
+ document.body.dataset.os=os; if(save){try{localStorage.setItem('os',os)}catch(e){}}}
+document.querySelectorAll('.switch button').forEach(b=>b.addEventListener('click',()=>setOS(b.dataset.os,true)));
+let os=location.hash==='#windows'?'win':location.hash==='#mac'?'mac':null;
+if(!os){try{os=localStorage.getItem('os')}catch(e){}}
+if(!os)os=/Win/.test(navigator.platform||navigator.userAgent)?'win':'mac';
+setOS(os,false);
+</script>
+</body>
+</html>
