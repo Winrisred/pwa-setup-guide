@@ -158,7 +158,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
         <div class="cmd"><pre>xcode-select --install</pre><button class="copy" type="button">Copy</button></div></li>
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
-      <p>macOS doesn't come with developer tools. This Apple package adds <b>compilers</b> (which build programs on your Mac) and <b>git</b>. The next step, Homebrew, won't install without it.</p>
+      <p>macOS doesn't come with developer tools. This Apple package adds <b>compilers</b> (which build programs on your Mac), <b>git</b> and <b>Python</b>. The next step, Homebrew, won't install without it.</p>
       <p><b>Terminal</b> is where you type commands. Most developer tools have no app window, so this is where you use them.</p>
     </div></details>
     <details class="more"><summary>Screen looks different?</summary><div class="in">
@@ -201,9 +201,9 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
   <section class="step">
     <div class="head"><span class="num">3</span><h2>git, Node and Python<span class="goal">The working materials</span></h2></div>
     <ol class="do">
-      <li><span class="act">Install all three:</span>
-        <div class="cmd"><pre>brew install git node python</pre><button class="copy" type="button">Copy</button></div></li>
-      <li><span class="act">Check them:</span>
+      <li><span class="act">Install Node.</span> git and Python already came with Apple's tools in step 1, so Node is the only one missing.
+        <div class="cmd"><pre>brew install node</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Check all three:</span>
         <div class="cmd"><pre>node -v && git --version && python3 --version</pre><button class="copy" type="button">Copy</button></div>
         <p class="ok">Three version numbers means you're done.</p></li>
     </ol>
@@ -213,6 +213,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
         <dt>Node</dt><dd>Runs JavaScript tools like Claude Code and Vercel. Comes with <b>npm</b>, which installs JavaScript tools (Homebrew = system tools, npm = JavaScript tools).</dd>
         <dt>Python</dt><dd>Gives you a quick local web server for testing.</dd>
       </dl>
+      <p><b>Why not <code>brew install git</code> too?</b> It would add a second git next to Apple's. Terminal would use one copy and other apps the other, and macOS can keep asking for your password because it sees them as different programs. One copy is simpler.</p>
       <p><b>Why a server?</b> A PWA doesn't fully work if you just double-click <code>index.html</code>. It needs a web address, and <code>localhost</code> counts. Inside a project folder, <code>python3 -m http.server 8000</code> makes it available at <code>http://localhost:8000</code>.</p>
     </div></details>
     <details class="more"><summary>Terminal stopped responding?</summary><div class="in">
@@ -292,7 +293,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
 
   <div class="chain">
     <h2>How it fits together</h2>
-    <div class="flow"><span>Apple tools</span><i>→</i><span>Homebrew</span><i>→</i><span>git · Node · Python</span><i>→</i><span>npm</span><i>→</i><span>Claude Code</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
+    <div class="flow"><span>Apple tools (git · Python)</span><i>→</i><span>Homebrew</span><i>→</i><span>Node</span><i>→</i><span>npm</span><i>→</i><span>Claude Code</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
     <p class="tip"><b>When something fails,</b> check the step before it. Each one depends on the last.</p>
   </div>
 </div>
