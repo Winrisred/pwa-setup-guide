@@ -22,10 +22,10 @@ Tips:
 To check changes before they go live, run a local server from this folder:
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8010
 ```
 
-Then open http://localhost:8000.
+Then open http://localhost:8010.
 
 - It works **only while the server is running**. Stopping it (`Ctrl+C`), closing the Terminal window, or shutting down the Mac turns it off.
 - Only you can see it. `localhost` means "this computer."
