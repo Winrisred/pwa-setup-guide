@@ -210,7 +210,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
     <details class="more"><summary>Why?</summary><div class="in">
       <dl>
         <dt>git</dt><dd>Saves every version of your project and sends it to GitHub. Vercel publishes from git.</dd>
-        <dt>Node</dt><dd>Runs JavaScript tools like Claude Code and Vercel. Comes with <b>npm</b>, which installs JavaScript tools (Homebrew = system tools, npm = JavaScript tools).</dd>
+        <dt>Node</dt><dd>Runs JavaScript outside the browser: Claude uses it to check the code it writes, and many web tools need it. Comes with <b>npm</b>, which installs JavaScript tools (Homebrew = system tools, npm = JavaScript tools).</dd>
         <dt>Python</dt><dd>Gives you a quick local web server for testing.</dd>
       </dl>
       <p><b>Why not <code>brew install git</code> too?</b> It would add a second git next to Apple's. Terminal would use one copy and other apps the other, and macOS can keep asking for your password because it sees them as different programs. One copy is simpler.</p>
@@ -242,18 +242,17 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
   </section>
 
   <section class="step">
-    <div class="head"><span class="num">5</span><h2>GitHub and Claude Code<span class="goal">Connect Terminal to your accounts</span></h2></div>
+    <div class="head"><span class="num">5</span><h2>GitHub and Claude Code<span class="goal">Connect your accounts</span></h2></div>
     <ol class="do">
       <li><span class="act">Connect Terminal to GitHub,</span> and answer the questions it asks (choose GitHub.com, HTTPS, log in with a web browser):
         <div class="cmd"><pre>brew install gh</pre><button class="copy" type="button">Copy</button></div>
         <div class="cmd"><pre>gh auth login</pre><button class="copy" type="button">Copy</button></div></li>
-      <li><span class="act">Install Claude Code:</span>
-        <div class="cmd"><pre>npm install -g @anthropic-ai/claude-code</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Install the Claude app:</span> download it from <b>claude.com/download</b>, drag it into Applications, open it and sign in with your project Google account. Its <b>Code</b> tab is Claude Code.</li>
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
       <p><b>GitHub</b> stores your code online. <code>gh auth login</code> signs you in once, so you're never asked for a password again.</p>
       <p><b>Vercel</b> publishes your PWA with HTTPS. Once a project is imported, every change you send to GitHub goes live automatically.</p>
-      <p><b>Claude Code</b> is the AI assistant that edits your files. It's installed with npm because it's a Node program, which is why Node came first. <code>-g</code> means you can use it from any folder. You can also use the Claude desktop app instead.</p>
+      <p><b>Claude Code</b> is the AI assistant that edits your files. In the app you see every change it makes, it can open your PWA in its own browser to test it, and you can paste screenshots to show it what you mean.</p>
     </div></details>
   </section>
 
@@ -293,7 +292,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
 
   <div class="chain">
     <h2>How it fits together</h2>
-    <div class="flow"><span>Apple tools (git · Python)</span><i>→</i><span>Homebrew</span><i>→</i><span>Node</span><i>→</i><span>npm</span><i>→</i><span>Claude Code</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
+    <div class="flow"><span>Apple tools (git · Python)</span><i>→</i><span>Homebrew</span><i>→</i><span>Node</span><i>→</i><span>Claude app</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
     <p class="tip"><b>When something fails,</b> check the step before it. Each one depends on the last.</p>
   </div>
 </div>
@@ -344,7 +343,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
       <p><b>Terminal</b> is where you type commands; inside it you use <b>PowerShell</b>. Most developer tools have no app window, so this is where you use them.</p>
-      <p>By default PowerShell blocks scripts, which also blocks tools like Claude Code. This allows scripts you installed yourself, for your user only.</p>
+      <p>By default PowerShell blocks scripts, which also blocks tools like npm. This allows scripts you installed yourself, for your user only.</p>
     </div></details>
     <details class="more"><summary>Screen looks different?</summary><div class="in">
       <ul>
@@ -389,7 +388,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
     <details class="more"><summary>Why?</summary><div class="in">
       <dl>
         <dt>git</dt><dd>Saves every version of your project and sends it to GitHub. Vercel publishes from git.</dd>
-        <dt>Node</dt><dd>Runs JavaScript tools like Claude Code and Vercel. Comes with <b>npm</b>, which installs JavaScript tools. LTS = the stable version.</dd>
+        <dt>Node</dt><dd>Runs JavaScript outside the browser: Claude uses it to check the code it writes, and many web tools need it. Comes with <b>npm</b>, which installs JavaScript tools. LTS = the stable version.</dd>
         <dt>Python</dt><dd>Gives you a quick local web server for testing.</dd>
       </dl>
       <p><b>Why a server?</b> A PWA doesn't fully work if you just double-click <code>index.html</code>. It needs a web address, and <code>localhost</code> counts. Inside a project folder, <code>py -m http.server 8000</code> makes it available at <code>http://localhost:8000</code>.</p>
@@ -429,18 +428,17 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
   </section>
 
   <section class="step">
-    <div class="head"><span class="num">5</span><h2>GitHub and Claude Code<span class="goal">Connect Terminal to your accounts</span></h2></div>
+    <div class="head"><span class="num">5</span><h2>GitHub and Claude Code<span class="goal">Connect your accounts</span></h2></div>
     <ol class="do">
       <li><span class="act">Connect Terminal to GitHub.</span> Install, open a new Terminal, then log in and answer the questions (GitHub.com, HTTPS, log in with a web browser):
         <div class="cmd"><pre>winget install GitHub.cli</pre><button class="copy" type="button">Copy</button></div>
         <div class="cmd"><pre>gh auth login</pre><button class="copy" type="button">Copy</button></div></li>
-      <li><span class="act">Install Claude Code:</span>
-        <div class="cmd"><pre>npm install -g @anthropic-ai/claude-code</pre><button class="copy" type="button">Copy</button></div></li>
+      <li><span class="act">Install the Claude app:</span> download it from <b>claude.com/download</b>, run the installer, open it and sign in with your project Google account. Its <b>Code</b> tab is Claude Code.</li>
     </ol>
     <details class="more"><summary>Why?</summary><div class="in">
       <p><b>GitHub</b> stores your code online. <code>gh auth login</code> signs you in once, so you're never asked for a password again.</p>
       <p><b>Vercel</b> publishes your PWA with HTTPS. Once a project is imported, every change you send to GitHub goes live automatically.</p>
-      <p><b>Claude Code</b> is the AI assistant that edits your files. It's installed with npm because it's a Node program. <code>-g</code> means you can use it from any folder. You can also use the Claude desktop app instead.</p>
+      <p><b>Claude Code</b> is the AI assistant that edits your files. In the app you see every change it makes, it can open your PWA in its own browser to test it, and you can paste screenshots to show it what you mean.</p>
     </div></details>
     <details class="more"><summary>Screen looks different?</summary><div class="in">
       <p><b>“running scripts is disabled”</b>: the command from step 1 is missing. Run it, then try again.</p>
@@ -484,7 +482,7 @@ dt{font:500 .85rem var(--mono);color:var(--ink)} dd{margin:0}
 
   <div class="chain">
     <h2>How it fits together</h2>
-    <div class="flow"><span>Terminal</span><i>→</i><span>winget</span><i>→</i><span>git · Node · Python</span><i>→</i><span>npm</span><i>→</i><span>Claude Code</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
+    <div class="flow"><span>Terminal</span><i>→</i><span>winget</span><i>→</i><span>git · Node · Python</span><i>→</i><span>Claude app</span><i>→</i><span>GitHub</span><i>→</i><span>Vercel (live)</span></div>
     <p class="tip"><b>When something fails,</b> check the step before it. Each one depends on the last.</p>
   </div>
 </div>
