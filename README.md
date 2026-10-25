@@ -1,6 +1,6 @@
 # PWA Setup Guide
 
-A one-page guide for students: what to install on a Mac or Windows computer before building PWAs, and why. It has a Mac / Windows switch at the top.
+A one-page guide for students: what to install on a Mac or Windows computer before building PWAs, and why. It has a Mac / Intel Mac / Windows switch at the top.
 
 **Live site:** https://winrisred.github.io/pwa-setup-guide/
 
@@ -15,7 +15,8 @@ Everything is in a single file, `index.html`. There's nothing to install or buil
 
 Tips:
 - Turn on word wrap (`⌥ Option + Z`) so long lines fit the window.
-- The Mac and Windows guides are separate blocks in the file. If a sentence appears in both, change it in both.
+- The Mac, Intel Mac and Windows guides are separate blocks in the file. If a sentence appears in more than one, change it in each.
+- The Intel Mac guide downloads fixed versions of Node and the GitHub CLI (Homebrew no longer supports Intel Macs). The links keep working, but bump the version numbers now and then.
 
 ## Previewing before publishing (optional)
 

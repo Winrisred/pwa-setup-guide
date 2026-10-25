@@ -100,6 +100,17 @@
         margin: 0 0 24px;
         max-width: 58ch;
       }
+      .lede .which {
+        display: block;
+        margin-top: 6px;
+      }
+      .lede b {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      a {
+        color: var(--accent);
+      }
       code {
         font: 0.88em var(--mono);
         background: var(--accent-soft);
@@ -249,6 +260,7 @@
       }
       .do li {
         margin: 0;
+        min-width: 0;
       }
       .act {
         font-weight: 500;
@@ -258,10 +270,11 @@
         background: var(--code-bg);
         color: var(--code-ink);
         border-radius: 6px;
-        overflow-x: auto;
+        overflow: hidden;
         margin-top: 6px;
       }
       .cmd pre {
+        overflow-x: auto;
         margin: 0;
         padding: 13px 78px 13px 16px;
         font: 500 0.9rem/1.5 var(--mono);
@@ -280,7 +293,8 @@
         right: 8px;
         font: 500 0.72rem var(--mono);
         color: var(--code-ink);
-        background: transparent;
+        background: var(--code-bg);
+        box-shadow: 0 0 0 8px var(--code-bg);
         border: 1px solid #445550;
         border-radius: 4px;
         padding: 4px 10px;
@@ -477,6 +491,8 @@
     <main>
       <div class="switch" role="group" aria-label="Choose your computer">
         <button type="button" data-os="mac" aria-pressed="true">Mac</button
+        ><button type="button" data-os="intel" aria-pressed="false">
+          Intel Mac</button
         ><button type="button" data-os="win" aria-pressed="false">
           Windows
         </button>
@@ -488,6 +504,11 @@
         <p class="lede">
           Seven steps, done once. Follow the dark boxes in order; open the grey
           ones only if you're curious or stuck.
+          <span class="which"
+            ><b>Intel Mac?</b> Check in Apple menu → About This Mac. If it
+            says “Intel”, use the
+            <a href="#intel" data-go="intel">Intel Mac guide</a>.</span
+          >
         </p>
 
         <div class="legend">
@@ -708,9 +729,10 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
                   >). It just adds a blank line and is harmless.
                 </li>
                 <li>
-                  <b>Older Intel Mac:</b> you may see no “Next steps” at all.
-                  Skip the two lines; <code>brew --version</code> will already
-                  work.
+                  <b><code>only supported on Apple Silicon processors</code></b
+                  >: you have an Intel Mac, and Homebrew no longer installs on
+                  those. Use the
+                  <a href="#intel" data-go="intel">Intel Mac guide</a> instead.
                 </li>
                 <li>
                   <b><code>command not found: brew</code></b
@@ -1028,6 +1050,559 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
             <span>Apple tools (git · Python)</span><i>→</i><span>Homebrew</span
             ><i>→</i><span>Node</span><i>→</i><span>Claude app</span><i>→</i
             ><span>GitHub</span><i>→</i><span>Vercel (live)</span>
+          </div>
+          <p class="tip">
+            <b>When something fails,</b> check the step before it. Each one
+            depends on the last.
+          </p>
+        </div>
+      </div>
+
+      <!-- ================= INTEL MAC ================= -->
+      <!-- Homebrew dropped Intel Macs, so tools come from their own installers.
+           Node and gh links are pinned versions: bump them now and then. -->
+      <div id="os-intel" hidden>
+        <h1>Set up your Intel Mac to build PWAs</h1>
+        <p class="lede">
+          Six steps, done once. Follow the dark boxes in order; open the grey
+          ones only if you're curious or stuck.
+          <span class="which"
+            ><b>Apple chip (M1, M2…)?</b> Use the
+            <a href="#mac" data-go="mac">Mac guide</a> instead.</span
+          >
+        </p>
+
+        <div class="legend">
+          <span><i class="sw do"></i>Do this: run it in Terminal</span>
+          <span
+            ><i class="sw more"></i>Optional: why, and if your screen looks
+            different</span
+          >
+        </div>
+
+        <div class="primer">
+          <h3>How to run a command</h3>
+          <ol>
+            <li>Click <b>Copy</b> on a dark box.</li>
+            <li>
+              In Terminal, paste on the last line (after the <code>%</code>):
+              <kbd>⌘</kbd> <kbd>V</kbd>
+            </li>
+            <li>
+              Press <kbd>Enter</kbd> and wait until the <code>%</code> comes
+              back.
+            </li>
+          </ol>
+        </div>
+
+        <div class="accounts">
+          <h3>Accounts to create first</h3>
+          <p class="sub">
+            Do these in a web browser, in this order, before step 1.
+          </p>
+          <ul class="acc">
+            <li>
+              <span class="n">Google</span
+              ><span class="d"
+                >A <b>new</b> account just for projects, not a personal, school
+                or work one. Turn on 2-Step Verification. Use it to sign up for
+                the others.</span
+              ><span class="tag rec">Recommended</span>
+            </li>
+            <li>
+              <span class="n">GitHub</span
+              ><span class="d"
+                >Stores your code online. At <b>github.com</b>, sign up with
+                your project Google account.</span
+              ><span class="tag req">Required</span>
+            </li>
+            <li>
+              <span class="n">Vercel</span
+              ><span class="d"
+                >Publishes your PWA. At <b>vercel.com</b>, choose
+                <b>Continue with GitHub</b>.</span
+              ><span class="tag req">Required</span>
+            </li>
+            <li>
+              <span class="n">Claude</span
+              ><span class="d"
+                >Your AI assistant. At <b>claude.ai</b>, sign in with your
+                project Google account. Claude Code needs a
+                <b>paid plan</b> (Pro or higher).</span
+              ><span class="tag req">Required</span>
+            </li>
+          </ul>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                <b>Google</b> isn't strictly needed, but one account for
+                everything means one password and no “which email did I use?”
+                later. Many simple PWAs also store their data in Google Sheets
+                or Drive.
+              </p>
+              <p>
+                Avoid school or work accounts: they often block sign-ins to
+                other services and disappear when you leave.
+              </p>
+              <p>
+                <b>Ages:</b> Google and GitHub require 13+, Claude requires 18+.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <section class="step">
+          <div class="head">
+            <span class="num">1</span>
+            <h2>
+              Developer basics<span class="goal"
+                >Open Terminal and install Apple's tools</span
+              >
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act">Open Terminal:</span> press <kbd>⌘</kbd>
+              <kbd>Space</kbd>, type <b>Terminal</b>, press <kbd>Enter</kbd>.
+            </li>
+            <li>
+              <span class="act">Check your macOS version:</span>
+              <div class="cmd">
+                <pre>sw_vers -productVersion</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <p class="ok">
+                13.5 or higher (like 14.7 or 15.3) is what you need.
+              </p>
+            </li>
+            <li>
+              <span class="act"
+                >Run this, then click Install in the window that appears:</span
+              >
+              <div class="cmd">
+                <pre>xcode-select --install</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                macOS doesn't come with developer tools. This Apple package adds
+                <b>compilers</b> (which build programs on your Mac),
+                <b>git</b> and <b>Python</b>.
+              </p>
+              <p>
+                <b>Terminal</b> is where you type commands. Most developer tools
+                have no app window, so this is where you use them.
+              </p>
+            </div>
+          </details>
+          <details class="more">
+            <summary>Screen looks different?</summary>
+            <div class="in">
+              <ul>
+                <li>
+                  <b>Lower than 13.5?</b> Update macOS in System Settings →
+                  General → Software Update, then check again. If your Mac
+                  can't go that high, step 2 has another option.
+                </li>
+                <li>
+                  If it says
+                  <code>command line tools are already installed</code>, great:
+                  skip to step 2.
+                </li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
+        <section class="step">
+          <div class="head">
+            <span class="num">2</span>
+            <h2>
+              git, Node and Python<span class="goal"
+                >The working materials</span
+              >
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act">Download Node.</span> git and Python already
+              came with Apple's tools in step 1, so Node is the only one
+              missing.
+              <div class="cmd">
+                <pre>
+curl -fL -o ~/Downloads/node.pkg https://nodejs.org/dist/v24.22.1/node-v24.22.1.pkg</pre
+                >
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Install it.</span> It asks for your Mac password
+              (you won't see it as you type; that's normal).
+              <div class="cmd">
+                <pre>sudo installer -pkg ~/Downloads/node.pkg -target /</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Check all three:</span>
+              <div class="cmd">
+                <pre>node -v && git --version && python3 --version</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <p class="ok">Three version numbers means you're done.</p>
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <dl>
+                <dt>git</dt>
+                <dd>
+                  Saves every version of your project and sends it to GitHub.
+                  Vercel publishes from git.
+                </dd>
+                <dt>Node</dt>
+                <dd>
+                  Runs JavaScript outside the browser: Claude uses it to check
+                  the code it writes, and many web tools need it. Comes with
+                  <b>npm</b>, which installs JavaScript tools.
+                </dd>
+                <dt>Python</dt>
+                <dd>Gives you a quick local web server for testing.</dd>
+              </dl>
+              <p>
+                <b>Why no Homebrew?</b> The Apple-chip guide installs tools with
+                Homebrew, but Homebrew stopped supporting Intel Macs in 2026. So
+                here you download each tool from the people who make it.
+              </p>
+              <dl>
+                <dt>curl</dt>
+                <dd>Downloads the installer into your Downloads folder.</dd>
+                <dt>sudo installer</dt>
+                <dd>
+                  Runs it, like double-clicking it. <code>sudo</code> means “as
+                  administrator”, which is why it asks for your password.
+                </dd>
+              </dl>
+              <p>
+                Once installed, you can delete <code>node.pkg</code> from
+                Downloads.
+              </p>
+              <p>
+                <b>Why a server?</b> A PWA doesn't fully work if you just
+                double-click <code>index.html</code>. It needs a web address,
+                and <code>localhost</code> counts. Inside a project folder,
+                <code>python3 -m http.server 8000</code> makes it available at
+                <code>http://localhost:8000</code>.
+              </p>
+            </div>
+          </details>
+          <details class="more">
+            <summary>Screen looks different?</summary>
+            <div class="in">
+              <p>
+                <b>macOS older than 13.5?</b> This version of Node won't run.
+                Download Node 22 instead, which works from macOS 11, then run
+                the same <code>sudo installer</code> line:
+              </p>
+              <div class="cmd">
+                <pre>
+curl -fL -o ~/Downloads/node.pkg https://nodejs.org/dist/v22.23.4/node-v22.23.4.pkg</pre
+                >
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </div>
+          </details>
+          <details class="more">
+            <summary>Terminal stopped responding?</summary>
+            <div class="in">
+              <p>
+                <b>A running server keeps its Terminal window busy.</b> While it
+                runs, anything you type there is ignored, so commands like
+                <code>git</code> won't run.
+              </p>
+              <ul>
+                <li>
+                  <b>Free:</b> the last line ends with <code>%</code> and the
+                  cursor is waiting.
+                </li>
+                <li>
+                  <b>Busy:</b> the last line is server output, like
+                  <code>Serving HTTP on…</code> or <code>GET / 200</code>.
+                </li>
+              </ul>
+              <p>
+                <b>To stop the server:</b> click in that window and press
+                <kbd>Ctrl</kbd> <kbd>C</kbd>. The <code>%</code> comes back.
+              </p>
+              <p>
+                <b>Better habit: use two tabs.</b> Open a new one with
+                <kbd>⌘</kbd> <kbd>T</kbd>. Tab 1 runs the server; tab 2 is for
+                everything else.
+              </p>
+            </div>
+          </details>
+        </section>
+
+        <section class="step">
+          <div class="head">
+            <span class="num">3</span>
+            <h2>Your git identity<span class="goal">Sign your work</span></h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act"
+                >Run all three, with your own name and your GitHub email:</span
+              >
+              <div class="cmd">
+                <pre>git config --global user.name "Your Name"</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>git config --global user.email "you@example.com"</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>git config --global init.defaultBranch main</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                Every saved version records who made it, and git won't save
+                until it knows. <code>--global</code> sets it once for the whole
+                computer. Using your GitHub email links your work to your
+                account.
+              </p>
+              <p>
+                <b>The <code>main</code> line:</b> older versions of git name a
+                new project's first branch <code>master</code>, while GitHub and
+                Vercel now expect <code>main</code>. This makes
+                <code>main</code> the default for every future project.
+              </p>
+            </div>
+          </details>
+        </section>
+
+        <section class="step">
+          <div class="head">
+            <span class="num">4</span>
+            <h2>
+              GitHub and Claude Code<span class="goal"
+                >Connect your accounts</span
+              >
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act">Install GitHub's tool,</span> one at a time. The
+              second asks for your Mac password again.
+              <div class="cmd">
+                <pre>
+curl -fL -o ~/Downloads/gh.pkg https://github.com/cli/cli/releases/download/v2.103.2/gh_2.103.2_macOS_universal.pkg</pre
+                >
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>sudo installer -pkg ~/Downloads/gh.pkg -target /</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Connect Terminal to GitHub,</span> and answer
+              the questions it asks (choose GitHub.com, HTTPS, log in with a web
+              browser):
+              <div class="cmd">
+                <pre>gh auth login</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Install the Claude app:</span> download it from
+              <b>claude.com/download</b>, drag it into Applications, open it and
+              sign in with your project Google account. Its <b>Code</b> tab is
+              Claude Code.
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                <b>GitHub</b> stores your code online.
+                <code>gh auth login</code> signs you in once, so you're never
+                asked for a password again.
+              </p>
+              <p>
+                <b>Vercel</b> publishes your PWA with HTTPS. Once a project is
+                imported, every change you send to GitHub goes live
+                automatically.
+              </p>
+              <p>
+                <b>Claude Code</b> is the AI assistant that edits your files. In
+                the app you see every change it makes, it can open your PWA in
+                its own browser to test it, and you can paste screenshots to
+                show it what you mean. The same download works on every Mac,
+                Intel included.
+              </p>
+            </div>
+          </details>
+        </section>
+
+        <section class="step">
+          <div class="head">
+            <span class="num">5</span>
+            <h2>
+              A code editor<span class="goal">See and edit your files</span>
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act"
+                >Download VS Code and put it in Applications:</span
+              >
+              <div class="cmd">
+                <pre>
+curl -fL -o ~/Downloads/vscode.zip https://update.code.visualstudio.com/latest/darwin-universal/stable</pre
+                >
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>ditto -xk ~/Downloads/vscode.zip /Applications</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act"
+                >Let Terminal open VS Code. Run both, one at a time:</span
+              >
+              <div class="cmd">
+                <pre>sudo mkdir -p /usr/local/bin</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>
+sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code" /usr/local/bin/code</pre
+                >
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Turn on word wrap</span> so long lines fit the
+              window: open VS Code, go to <b>Settings</b> (<kbd>⌘</kbd>
+              <kbd>,</kbd>), search <b>word wrap</b>, set it to <b>on</b>.
+            </li>
+            <li>
+              <span class="act"
+                >Install Prettier, which tidies code layout:</span
+              >
+              <div class="cmd">
+                <pre>code --install-extension esbenp.prettier-vscode</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                Claude writes most of the code, but you still need to read what
+                changed and make small edits.
+              </p>
+              <dl>
+                <dt>curl, ditto</dt>
+                <dd>
+                  Download VS Code as a zip file and unpack it into
+                  Applications. It updates itself after that.
+                </dd>
+                <dt>mkdir, ln</dt>
+                <dd>
+                  Add a shortcut so typing <code>code</code> in Terminal opens
+                  VS Code. The first makes the folder for it if it's missing.
+                </dd>
+              </dl>
+              <p>
+                <b>Word wrap:</b> web files often have very long lines that run
+                off the screen. Wrapping folds them to fit, so you can read
+                without scrolling sideways. Quick toggle:
+                <kbd>⌥ Option + Z</kbd>.
+              </p>
+              <p>
+                <b>Prettier</b> fixes indentation and spacing so code is easier
+                to scan. Use it on any open file with
+                <kbd>⌥ Option + Shift + F</kbd> (“Format Document”). If VS Code
+                asks which formatter to use, choose <b>Prettier</b>.
+              </p>
+            </div>
+          </details>
+          <details class="more">
+            <summary>Screen looks different?</summary>
+            <div class="in">
+              <p>
+                <b><code>code</code> not found?</b> Open VS Code, press
+                <kbd>⌘</kbd> <kbd>Shift</kbd> <kbd>P</kbd>, type
+                <b>shell command</b>, choose
+                <b>Install ‘code’ command in PATH</b>, then open a new Terminal.
+              </p>
+              <p>
+                Or install Prettier by hand: in VS Code open
+                <b>Extensions</b> (the four-squares icon on the left), search
+                <b>Prettier</b>, and install <b>Prettier - Code formatter</b>.
+              </p>
+            </div>
+          </details>
+        </section>
+
+        <section class="step">
+          <div class="head">
+            <span class="num">6</span>
+            <h2>
+              A home for your projects<span class="goal"
+                >One folder for everything</span
+              >
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act">Create it:</span>
+              <div class="cmd">
+                <pre>mkdir -p ~/Documents/my-projects</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Rules to keep it tidy</summary>
+            <div class="in">
+              <ul>
+                <li>
+                  <b
+                    >One project = one folder = one GitHub repo = one Vercel
+                    site.</b
+                  >
+                </li>
+                <li>
+                  <b>No spaces or accents in names:</b> <code>my-app</code>, not
+                  <code>My App</code>. Terminal handles spaces badly.
+                </li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
+        <div class="chain">
+          <h2>How it fits together</h2>
+          <div class="flow">
+            <span>Apple tools (git · Python)</span><i>→</i><span>Node</span
+            ><i>→</i><span>Claude app</span><i>→</i><span>GitHub</span
+            ><i>→</i><span>Vercel (live)</span>
           </div>
           <p class="tip">
             <b>When something fails,</b> check the step before it. Each one
@@ -1622,6 +2197,7 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
       }
       const panes = {
         mac: document.getElementById("os-mac"),
+        intel: document.getElementById("os-intel"),
         win: document.getElementById("os-win"),
       };
       function setOS(os, save) {
@@ -1641,18 +2217,22 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
         .forEach((b) =>
           b.addEventListener("click", () => setOS(b.dataset.os, true)),
         );
-      let os =
-        location.hash === "#windows"
-          ? "win"
-          : location.hash === "#mac"
-            ? "mac"
-            : null;
+      document.querySelectorAll("[data-go]").forEach((a) =>
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          setOS(a.dataset.go, true);
+          scrollTo(0, 0);
+        }),
+      );
+      let os = { "#windows": "win", "#mac": "mac", "#intel": "intel" }[
+        location.hash
+      ];
       if (!os) {
         try {
           os = localStorage.getItem("os");
         } catch (e) {}
       }
-      if (!os)
+      if (!panes[os])
         os = /Win/.test(navigator.platform || navigator.userAgent)
           ? "win"
           : "mac";
