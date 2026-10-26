@@ -502,8 +502,8 @@
       <div id="os-mac">
         <h1>Set up your Mac to build PWAs</h1>
         <p class="lede">
-          Seven steps, done once. Follow the dark boxes in order; open the grey
-          ones only if you're curious or stuck.
+          Seven steps, done once (step 8 is optional). Follow the dark boxes in
+          order; open the grey ones only if you're curious or stuck.
           <span class="which"
             ><b>Intel Mac?</b> Check in Apple menu → About This Mac. If it
             says “Intel”, use the
@@ -567,7 +567,8 @@
               ><span class="d"
                 >Your AI assistant. At <b>claude.ai</b>, sign in with your
                 project Google account. Claude Code needs a
-                <b>paid plan</b> (Pro or higher).</span
+                <b>paid plan</b> (Pro or higher). Already pay for Pro? Use that
+                account; you don't need a second plan.</span
               ><span class="tag req">Required</span>
             </li>
           </ul>
@@ -910,8 +911,8 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
             <li>
               <span class="act">Install the Claude app:</span> download it from
               <b>claude.com/download</b>, drag it into Applications, open it and
-              sign in with your project Google account. Its <b>Code</b> tab is
-              Claude Code.
+              sign in with your Claude account. Its <b>Code</b> tab is Claude
+              Code.
             </li>
           </ol>
           <details class="more">
@@ -1044,6 +1045,90 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
           </details>
         </section>
 
+        <section class="step">
+          <div class="head">
+            <span class="num">8</span>
+            <h2>
+              Extra AI credits<span class="goal"
+                >Optional: free with your ESADE email</span
+              >
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act">Claim Kiro's student offer:</span> at
+              <b>kiro.dev/students</b>, sign up with <b>AWS Builder ID</b> using
+              your <b>ESADE email</b>, then verify that you're a student.
+            </li>
+            <li>
+              <span class="act">Install the Kiro CLI:</span>
+              <div class="cmd">
+                <pre>curl -fsSL https://cli.kiro.dev/install | bash</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Open a new Terminal window,</span> log in with the same
+              Builder ID (choose <b>Use with Builder ID</b>), then start Kiro:
+              <div class="cmd">
+                <pre>kiro-cli login</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>kiro-cli --v3</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Get Antigravity, Google's AI coding app:</span>
+              download it from <b>antigravity.google</b> (choose <b>Apple Silicon</b>) and sign in
+              with your <b>ESADE email</b> for extra credits.
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                <b>Kiro</b> (from Amazon) and <b>Antigravity</b> (from Google)
+                are AI coding assistants like Claude Code. Using your student
+                email gets you extra credits for free, which helps when you run
+                out of Claude usage.
+              </p>
+              <p>
+                <b>Kiro's student offer:</b> 1,000 credits a month for one year,
+                no card needed. You must be 18+, and the account must use your
+                university email.
+              </p>
+              <dl>
+                <dt>kiro-cli login</dt>
+                <dd>Signs Terminal in to your Kiro account, once.</dd>
+                <dt>kiro-cli --v3</dt>
+                <dd>Starts a chat with Kiro, using its newest version.</dd>
+              </dl>
+            </div>
+          </details>
+          <details class="more">
+            <summary>Screen looks different?</summary>
+            <div class="in">
+              <ul>
+                <li>
+                  The installer opens the Kiro CLI app in the background. That's
+                  normal: it sets up the <code>kiro-cli</code> command.
+                </li>
+                <li>
+                  <b><code>kiro-cli</code> not found?</b> Quit Terminal (<kbd>⌘</kbd>
+                  <kbd>Q</kbd>) and open it again.
+                </li>
+                <li>
+                  <b>Already have a Kiro account with another email?</b> Add
+                  your ESADE email to it, then verify from its
+                  <b>Account Usage</b> page.
+                </li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
         <div class="chain">
           <h2>How it fits together</h2>
           <div class="flow">
@@ -1064,8 +1149,8 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
       <div id="os-intel" hidden>
         <h1>Set up your Intel Mac to build PWAs</h1>
         <p class="lede">
-          Six steps, done once. Follow the dark boxes in order; open the grey
-          ones only if you're curious or stuck.
+          Six steps, done once (step 7 is optional). Follow the dark boxes in
+          order; open the grey ones only if you're curious or stuck.
           <span class="which"
             ><b>Apple chip (M1, M2…)?</b> Use the
             <a href="#mac" data-go="mac">Mac guide</a> instead.</span
@@ -1128,7 +1213,8 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
               ><span class="d"
                 >Your AI assistant. At <b>claude.ai</b>, sign in with your
                 project Google account. Claude Code needs a
-                <b>paid plan</b> (Pro or higher).</span
+                <b>paid plan</b> (Pro or higher). Already pay for Pro? Use that
+                account; you don't need a second plan.</span
               ><span class="tag req">Required</span>
             </li>
           </ul>
@@ -1428,8 +1514,8 @@ curl -fL -o ~/Downloads/gh.pkg https://github.com/cli/cli/releases/download/v2.1
             <li>
               <span class="act">Install the Claude app:</span> download it from
               <b>claude.com/download</b>, drag it into Applications, open it and
-              sign in with your project Google account. Its <b>Code</b> tab is
-              Claude Code.
+              sign in with your Claude account. Its <b>Code</b> tab is Claude
+              Code.
             </li>
           </ol>
           <details class="more">
@@ -1597,6 +1683,90 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
           </details>
         </section>
 
+        <section class="step">
+          <div class="head">
+            <span class="num">7</span>
+            <h2>
+              Extra AI credits<span class="goal"
+                >Optional: free with your ESADE email</span
+              >
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act">Claim Kiro's student offer:</span> at
+              <b>kiro.dev/students</b>, sign up with <b>AWS Builder ID</b> using
+              your <b>ESADE email</b>, then verify that you're a student.
+            </li>
+            <li>
+              <span class="act">Install the Kiro CLI:</span>
+              <div class="cmd">
+                <pre>curl -fsSL https://cli.kiro.dev/install | bash</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Open a new Terminal window,</span> log in with the same
+              Builder ID (choose <b>Use with Builder ID</b>), then start Kiro:
+              <div class="cmd">
+                <pre>kiro-cli login</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>kiro-cli --v3</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Get Antigravity, Google's AI coding app:</span>
+              download it from <b>antigravity.google</b> (choose <b>Intel</b>) and sign in
+              with your <b>ESADE email</b> for extra credits.
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                <b>Kiro</b> (from Amazon) and <b>Antigravity</b> (from Google)
+                are AI coding assistants like Claude Code. Using your student
+                email gets you extra credits for free, which helps when you run
+                out of Claude usage.
+              </p>
+              <p>
+                <b>Kiro's student offer:</b> 1,000 credits a month for one year,
+                no card needed. You must be 18+, and the account must use your
+                university email.
+              </p>
+              <dl>
+                <dt>kiro-cli login</dt>
+                <dd>Signs Terminal in to your Kiro account, once.</dd>
+                <dt>kiro-cli --v3</dt>
+                <dd>Starts a chat with Kiro, using its newest version.</dd>
+              </dl>
+            </div>
+          </details>
+          <details class="more">
+            <summary>Screen looks different?</summary>
+            <div class="in">
+              <ul>
+                <li>
+                  The installer opens the Kiro CLI app in the background. That's
+                  normal: it sets up the <code>kiro-cli</code> command.
+                </li>
+                <li>
+                  <b><code>kiro-cli</code> not found?</b> Quit Terminal (<kbd>⌘</kbd>
+                  <kbd>Q</kbd>) and open it again.
+                </li>
+                <li>
+                  <b>Already have a Kiro account with another email?</b> Add
+                  your ESADE email to it, then verify from its
+                  <b>Account Usage</b> page.
+                </li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
         <div class="chain">
           <h2>How it fits together</h2>
           <div class="flow">
@@ -1615,8 +1785,8 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
       <div id="os-win" hidden>
         <h1>Set up your Windows PC to build PWAs</h1>
         <p class="lede">
-          Seven steps, done once. Follow the dark boxes in order; open the grey
-          ones only if you're curious or stuck.
+          Seven steps, done once (step 8 is optional). Follow the dark boxes in
+          order; open the grey ones only if you're curious or stuck.
         </p>
 
         <div class="legend">
@@ -1681,7 +1851,8 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
               ><span class="d"
                 >Your AI assistant. At <b>claude.ai</b>, sign in with your
                 project Google account. Claude Code needs a
-                <b>paid plan</b> (Pro or higher).</span
+                <b>paid plan</b> (Pro or higher). Already pay for Pro? Use that
+                account; you don't need a second plan.</span
               ><span class="tag req">Required</span>
             </li>
           </ul>
@@ -2019,8 +2190,7 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
             <li>
               <span class="act">Install the Claude app:</span> download it from
               <b>claude.com/download</b>, run the installer, open it and sign in
-              with your project Google account. Its <b>Code</b> tab is Claude
-              Code.
+              with your Claude account. Its <b>Code</b> tab is Claude Code.
             </li>
           </ol>
           <details class="more">
@@ -2151,6 +2321,89 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
                 <li>
                   <b>No spaces or accents in names:</b> <code>my-app</code>, not
                   <code>My App</code>.
+                </li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
+        <section class="step">
+          <div class="head">
+            <span class="num">8</span>
+            <h2>
+              Extra AI credits<span class="goal"
+                >Optional: free with your ESADE email</span
+              >
+            </h2>
+          </div>
+          <ol class="do">
+            <li>
+              <span class="act">Claim Kiro's student offer:</span> at
+              <b>kiro.dev/students</b>, sign up with <b>AWS Builder ID</b> using
+              your <b>ESADE email</b>, then verify that you're a student.
+            </li>
+            <li>
+              <span class="act">Install the Kiro CLI:</span>
+              <div class="cmd">
+                <pre>irm https://cli.kiro.dev/install.ps1 | iex</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Open a new Terminal,</span> log in with the same
+              Builder ID (choose <b>Use with Builder ID</b>), then start Kiro:
+              <div class="cmd">
+                <pre>kiro-cli login</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <div class="cmd">
+                <pre>kiro-cli --v3</pre>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </li>
+            <li>
+              <span class="act">Get Antigravity, Google's AI coding app:</span>
+              download it from <b>antigravity.google</b> and sign in
+              with your <b>ESADE email</b> for extra credits.
+            </li>
+          </ol>
+          <details class="more">
+            <summary>Why?</summary>
+            <div class="in">
+              <p>
+                <b>Kiro</b> (from Amazon) and <b>Antigravity</b> (from Google)
+                are AI coding assistants like Claude Code. Using your student
+                email gets you extra credits for free, which helps when you run
+                out of Claude usage.
+              </p>
+              <p>
+                <b>Kiro's student offer:</b> 1,000 credits a month for one year,
+                no card needed. You must be 18+, and the account must use your
+                university email.
+              </p>
+              <dl>
+                <dt>kiro-cli login</dt>
+                <dd>Signs Terminal in to your Kiro account, once.</dd>
+                <dt>kiro-cli --v3</dt>
+                <dd>Starts a chat with Kiro, using its newest version.</dd>
+              </dl>
+            </div>
+          </details>
+          <details class="more">
+            <summary>Screen looks different?</summary>
+            <div class="in">
+              <ul>
+                <li>
+                  The Kiro CLI needs <b>Windows 11</b>.
+                </li>
+                <li>
+                  <b><code>kiro-cli</code> not found?</b> Close all Terminal windows
+                  and open a new one. If it still fails, restart the PC.
+                </li>
+                <li>
+                  <b>Already have a Kiro account with another email?</b> Add
+                  your ESADE email to it, then verify from its
+                  <b>Account Usage</b> page.
                 </li>
               </ul>
             </div>
