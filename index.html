@@ -661,8 +661,11 @@
           <ol class="do">
             <li>
               <span class="act">Run this.</span> It asks for your Mac password
-              (you won't see it as you type; that's normal) and takes a few
-              minutes.
+              (you won't see it as you type; that's normal). Then it lists what
+              it will install and stops at
+              <code>Press RETURN/ENTER to continue</code>: press
+              <kbd>Enter</kbd> a second time. If you don't, it looks finished
+              but nothing gets installed. After that it takes a few minutes.
               <div class="cmd">
                 <pre>
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre
@@ -745,6 +748,13 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
                   <b><code>command not found: brew</code></b
                   >: the two lines weren't run yet, or you're in a different
                   window. Run them again in this window.
+                </li>
+                <li>
+                  <b><code>no such file or directory: /opt/homebrew/bin/brew</code></b
+                  >: the installer stopped at
+                  <code>Press RETURN/ENTER to continue</code> and never ran.
+                  Run the first command again and press <kbd>Enter</kbd> at
+                  that line.
                 </li>
               </ul>
               <p>
