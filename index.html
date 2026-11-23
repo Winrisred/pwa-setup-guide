@@ -312,6 +312,15 @@
         content: "✓ ";
         font-weight: 600;
       }
+      .no {
+        font-size: 0.9rem;
+        margin-top: 4px;
+      }
+      .no::before {
+        content: "✗ ";
+        font-weight: 600;
+        color: var(--muted);
+      }
 
       /* MORE: explanations */
       details.more {
@@ -1076,26 +1085,26 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
             <li>
               <span class="act">Claim Kiro's student offer:</span> at
               <b>kiro.dev/students</b>, sign up with <b>AWS Builder ID</b> using
-              your <b>ESADE email</b>, then verify that you're a student.
+              your <b>ESADE email</b>, then verify that you're a student with
+              <b>SheerID</b>, using the same ESADE email address.
             </li>
             <li>
-              <span class="act">Install the Kiro CLI:</span>
-              <div class="cmd">
-                <pre>curl -fsSL https://cli.kiro.dev/install | bash</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
+              <span class="act">Install the Kiro IDE (the Kiro app):</span> download it from
+              <b>kiro.dev/downloads</b> (choose <b>Apple Silicon</b>), open it and sign in with the same
+              <b>AWS Builder ID</b>. Stuck later? Paste or drag a screenshot of
+              the problem into Kiro's chat.
             </li>
             <li>
-              <span class="act">Open a new Terminal window,</span> log in with the same
-              Builder ID (choose <b>Use with Builder ID</b>), then start Kiro:
-              <div class="cmd">
-                <pre>kiro-cli login</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
-              <div class="cmd">
-                <pre>kiro-cli --v3</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
+              <span class="act">Check you got the student credits:</span> in
+              the Kiro IDE, find your user on the left side and look at your
+              credits.
+              <p class="ok">1,000 credits means you're done.</p>
+              <p class="no">
+                <b>Only 50?</b> You're signed in, but still on Kiro's free plan.
+                Logging in with your ESADE email isn't enough: open
+                <b>Account Usage</b>, click <b>Verify</b> and register your
+                ESADE email address with SheerID.
+              </p>
             </li>
             <li>
               <span class="act">Get Antigravity, Google's AI coding app:</span>
@@ -1109,25 +1118,32 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
             <div class="in">
               <p>
                 <b>Kiro</b> (from Amazon) and <b>Antigravity</b> (from Google)
-                are AI coding assistants like Claude Code, and both let you use
-                Claude's models. With your student email they're free, so you
-                don't need a Claude subscription.
+                are AI coding assistants like Claude Code. Both let you use
+                Claude's models, and also models from OpenAI, Google and
+                others. With your student email they're free, so you don't need
+                a Claude subscription.
               </p>
               <p>
                 <b>Kiro's student offer:</b> 1,000 credits a month for one year,
                 no card needed. You must be 18+, and the account must use your
-                university email.
+                university email. Until SheerID confirms you're a student, Kiro
+                treats you as a free user, with only 50 credits a month.
               </p>
               <p>
                 <b>Antigravity's student offer:</b> 1 year free, verified with
                 your student ID.
               </p>
-              <dl>
-                <dt>kiro-cli login</dt>
-                <dd>Signs Terminal in to your Kiro account, once.</dd>
-                <dt>kiro-cli --v3</dt>
-                <dd>Starts a chat with Kiro, using its newest version.</dd>
-              </dl>
+              <p>
+                <b>Kiro or Antigravity?</b> Kiro gives you access to more
+                powerful AI models than Antigravity. Antigravity's models are
+                still good enough for what you'll build here.
+              </p>
+              <p>
+                <b>Why the Kiro IDE?</b> "IDE" is just the name for a coding app,
+                so the Kiro IDE is the Kiro app. You can paste or drag
+                screenshots into its chat, so Kiro sees the error exactly as you
+                do. It looks like VS Code, because it's built on the same base.
+              </p>
             </div>
           </details>
           <details class="more">
@@ -1135,12 +1151,8 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile</pre
             <div class="in">
               <ul>
                 <li>
-                  The installer opens the Kiro CLI app in the background. That's
-                  normal: it sets up the <code>kiro-cli</code> command.
-                </li>
-                <li>
-                  <b><code>kiro-cli</code> not found?</b> Quit Terminal (<kbd>⌘</kbd>
-                  <kbd>Q</kbd>) and open it again.
+                  <b>Mac asks if you're sure you want to open Kiro?</b> It
+                  was downloaded from the internet. Click <b>Open</b>.
                 </li>
                 <li>
                   <b>Already have a Kiro account with another email?</b> Add
@@ -1723,26 +1735,26 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
             <li>
               <span class="act">Claim Kiro's student offer:</span> at
               <b>kiro.dev/students</b>, sign up with <b>AWS Builder ID</b> using
-              your <b>ESADE email</b>, then verify that you're a student.
+              your <b>ESADE email</b>, then verify that you're a student with
+              <b>SheerID</b>, using the same ESADE email address.
             </li>
             <li>
-              <span class="act">Install the Kiro CLI:</span>
-              <div class="cmd">
-                <pre>curl -fsSL https://cli.kiro.dev/install | bash</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
+              <span class="act">Install the Kiro IDE (the Kiro app):</span> download it from
+              <b>kiro.dev/downloads</b> (choose <b>Intel</b>), open it and sign in with the same
+              <b>AWS Builder ID</b>. Stuck later? Paste or drag a screenshot of
+              the problem into Kiro's chat.
             </li>
             <li>
-              <span class="act">Open a new Terminal window,</span> log in with the same
-              Builder ID (choose <b>Use with Builder ID</b>), then start Kiro:
-              <div class="cmd">
-                <pre>kiro-cli login</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
-              <div class="cmd">
-                <pre>kiro-cli --v3</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
+              <span class="act">Check you got the student credits:</span> in
+              the Kiro IDE, find your user on the left side and look at your
+              credits.
+              <p class="ok">1,000 credits means you're done.</p>
+              <p class="no">
+                <b>Only 50?</b> You're signed in, but still on Kiro's free plan.
+                Logging in with your ESADE email isn't enough: open
+                <b>Account Usage</b>, click <b>Verify</b> and register your
+                ESADE email address with SheerID.
+              </p>
             </li>
             <li>
               <span class="act">Get Antigravity, Google's AI coding app:</span>
@@ -1756,25 +1768,32 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
             <div class="in">
               <p>
                 <b>Kiro</b> (from Amazon) and <b>Antigravity</b> (from Google)
-                are AI coding assistants like Claude Code, and both let you use
-                Claude's models. With your student email they're free, so you
-                don't need a Claude subscription.
+                are AI coding assistants like Claude Code. Both let you use
+                Claude's models, and also models from OpenAI, Google and
+                others. With your student email they're free, so you don't need
+                a Claude subscription.
               </p>
               <p>
                 <b>Kiro's student offer:</b> 1,000 credits a month for one year,
                 no card needed. You must be 18+, and the account must use your
-                university email.
+                university email. Until SheerID confirms you're a student, Kiro
+                treats you as a free user, with only 50 credits a month.
               </p>
               <p>
                 <b>Antigravity's student offer:</b> 1 year free, verified with
                 your student ID.
               </p>
-              <dl>
-                <dt>kiro-cli login</dt>
-                <dd>Signs Terminal in to your Kiro account, once.</dd>
-                <dt>kiro-cli --v3</dt>
-                <dd>Starts a chat with Kiro, using its newest version.</dd>
-              </dl>
+              <p>
+                <b>Kiro or Antigravity?</b> Kiro gives you access to more
+                powerful AI models than Antigravity. Antigravity's models are
+                still good enough for what you'll build here.
+              </p>
+              <p>
+                <b>Why the Kiro IDE?</b> "IDE" is just the name for a coding app,
+                so the Kiro IDE is the Kiro app. You can paste or drag
+                screenshots into its chat, so Kiro sees the error exactly as you
+                do. It looks like VS Code, because it's built on the same base.
+              </p>
             </div>
           </details>
           <details class="more">
@@ -1782,12 +1801,8 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
             <div class="in">
               <ul>
                 <li>
-                  The installer opens the Kiro CLI app in the background. That's
-                  normal: it sets up the <code>kiro-cli</code> command.
-                </li>
-                <li>
-                  <b><code>kiro-cli</code> not found?</b> Quit Terminal (<kbd>⌘</kbd>
-                  <kbd>Q</kbd>) and open it again.
+                  <b>Mac asks if you're sure you want to open Kiro?</b> It
+                  was downloaded from the internet. Click <b>Open</b>.
                 </li>
                 <li>
                   <b>Already have a Kiro account with another email?</b> Add
@@ -2376,26 +2391,26 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
             <li>
               <span class="act">Claim Kiro's student offer:</span> at
               <b>kiro.dev/students</b>, sign up with <b>AWS Builder ID</b> using
-              your <b>ESADE email</b>, then verify that you're a student.
+              your <b>ESADE email</b>, then verify that you're a student with
+              <b>SheerID</b>, using the same ESADE email address.
             </li>
             <li>
-              <span class="act">Install the Kiro CLI:</span>
-              <div class="cmd">
-                <pre>irm https://cli.kiro.dev/install.ps1 | iex</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
+              <span class="act">Install the Kiro IDE (the Kiro app):</span> download it from
+              <b>kiro.dev/downloads</b>, open it and sign in with the same
+              <b>AWS Builder ID</b>. Stuck later? Paste or drag a screenshot of
+              the problem into Kiro's chat.
             </li>
             <li>
-              <span class="act">Open a new Terminal,</span> log in with the same
-              Builder ID (choose <b>Use with Builder ID</b>), then start Kiro:
-              <div class="cmd">
-                <pre>kiro-cli login</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
-              <div class="cmd">
-                <pre>kiro-cli --v3</pre>
-                <button class="copy" type="button">Copy</button>
-              </div>
+              <span class="act">Check you got the student credits:</span> in
+              the Kiro IDE, find your user on the left side and look at your
+              credits.
+              <p class="ok">1,000 credits means you're done.</p>
+              <p class="no">
+                <b>Only 50?</b> You're signed in, but still on Kiro's free plan.
+                Logging in with your ESADE email isn't enough: open
+                <b>Account Usage</b>, click <b>Verify</b> and register your
+                ESADE email address with SheerID.
+              </p>
             </li>
             <li>
               <span class="act">Get Antigravity, Google's AI coding app:</span>
@@ -2409,38 +2424,38 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
             <div class="in">
               <p>
                 <b>Kiro</b> (from Amazon) and <b>Antigravity</b> (from Google)
-                are AI coding assistants like Claude Code, and both let you use
-                Claude's models. With your student email they're free, so you
-                don't need a Claude subscription.
+                are AI coding assistants like Claude Code. Both let you use
+                Claude's models, and also models from OpenAI, Google and
+                others. With your student email they're free, so you don't need
+                a Claude subscription.
               </p>
               <p>
                 <b>Kiro's student offer:</b> 1,000 credits a month for one year,
                 no card needed. You must be 18+, and the account must use your
-                university email.
+                university email. Until SheerID confirms you're a student, Kiro
+                treats you as a free user, with only 50 credits a month.
               </p>
               <p>
                 <b>Antigravity's student offer:</b> 1 year free, verified with
                 your student ID.
               </p>
-              <dl>
-                <dt>kiro-cli login</dt>
-                <dd>Signs Terminal in to your Kiro account, once.</dd>
-                <dt>kiro-cli --v3</dt>
-                <dd>Starts a chat with Kiro, using its newest version.</dd>
-              </dl>
+              <p>
+                <b>Kiro or Antigravity?</b> Kiro gives you access to more
+                powerful AI models than Antigravity. Antigravity's models are
+                still good enough for what you'll build here.
+              </p>
+              <p>
+                <b>Why the Kiro IDE?</b> "IDE" is just the name for a coding app,
+                so the Kiro IDE is the Kiro app. You can paste or drag
+                screenshots into its chat, so Kiro sees the error exactly as you
+                do. It looks like VS Code, because it's built on the same base.
+              </p>
             </div>
           </details>
           <details class="more">
             <summary>Screen looks different?</summary>
             <div class="in">
               <ul>
-                <li>
-                  The Kiro CLI needs <b>Windows 11</b>.
-                </li>
-                <li>
-                  <b><code>kiro-cli</code> not found?</b> Close all Terminal windows
-                  and open a new one. If it still fails, restart the PC.
-                </li>
                 <li>
                   <b>Already have a Kiro account with another email?</b> Add
                   your ESADE email to it, then verify from its
