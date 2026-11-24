@@ -4,7 +4,7 @@ A one-page guide for students: what to install on a Mac or Windows computer befo
 
 **Live site:** https://winrisred.github.io/pwa-setup-guide/
 
-Everything is in a single file, `index.html`, plus the tab icon (`icon.svg`, with `favicon.ico` and `apple-touch-icon.png` as copies for older browsers and iPhones). There's nothing to install or build.
+The guide is a single file, `index.html`, plus the tab icon (`icon.svg`, with `favicon.ico` and `apple-touch-icon.png` as copies for older browsers and iPhones). The assignment rules page is `assignment.md` (the text) and `assignment.html` (which displays it). There's nothing to install or build.
 
 ## Changing the wording
 
@@ -18,6 +18,26 @@ Tips:
 - The Mac, Intel Mac and Windows guides are separate blocks in the file. If a sentence appears in more than one, change it in each.
 - The exception is the **Why set this up?** box: there's one copy, near the top of the file, and it shows in all three guides.
 - The Intel Mac guide downloads fixed versions of Node and the GitHub CLI (Homebrew no longer supports Intel Macs). The links keep working, but bump the version numbers now and then.
+
+## Assignment rules page
+
+**Page:** https://winrisred.github.io/pwa-setup-guide/assignment.html
+
+The text lives in `assignment.md`. Edit that file, never `assignment.html`.
+
+To change it from any browser (bookmark this link):
+https://github.com/Winrisred/pwa-setup-guide/edit/main/assignment.md
+
+1. Make your changes. The note at the top of the file explains the formatting.
+2. Check the **Preview** tab.
+3. Click **Commit changes**. The page updates in about a minute.
+
+You can also edit it in VS Code and commit and push as usual.
+
+- `TBC` shows highlighted on the page. Use it for anything not decided yet.
+- **It's hidden for now:** the guide doesn't link to it, and search engines are told to skip it. The repo is public, though, so anyone with the link can read it.
+- **To publish it:** in `assignment.html`, delete the line with `noindex`, then add a link to `assignment.html` in the guide (for example, at the end of the "Why set this up?" box).
+- The empty `.nojekyll` file stops GitHub from turning `assignment.md` into a page of its own. Don't delete it.
 
 ## Previewing before publishing (optional)
 

@@ -1,0 +1,219 @@
+<!doctype html>
+<!-- This page only displays assignment.md. To change the rules, edit
+     assignment.md, not this file. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Hidden for now: tells search engines to skip this page.
+         Delete this line when the rules are ready for students. -->
+    <meta name="robots" content="noindex" />
+    <title>Assignment Rules</title>
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500&display=swap"
+    />
+    <style>
+      :root {
+        --bg: #f5f6f4;
+        --paper: #ffffff;
+        --ink: #1d2322;
+        --muted: #667270;
+        --line: #dde2df;
+        --accent: #2f6f66;
+        --accent-soft: #e3efec;
+        --mark-bg: #fbeeb8;
+        --mark-ink: #5a4500;
+        --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+        --serif: "Newsreader", Georgia, serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #141918;
+          --paper: #1b2120;
+          --ink: #e3e9e6;
+          --muted: #9aa8a4;
+          --line: #2c3533;
+          --accent: #7fbfb3;
+          --accent-soft: #1f302d;
+          --mark-bg: #4a3d12;
+          --mark-ink: #f3dc8a;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #141918;
+        --paper: #1b2120;
+        --ink: #e3e9e6;
+        --muted: #9aa8a4;
+        --line: #2c3533;
+        --accent: #7fbfb3;
+        --accent-soft: #1f302d;
+        --mark-bg: #4a3d12;
+        --mark-ink: #f3dc8a;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.6 var(--sans);
+        padding: 0 16px;
+        margin: 0;
+      }
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding-block: 40px 80px;
+      }
+      a {
+        color: var(--accent);
+      }
+      .back {
+        display: inline-block;
+        margin-bottom: 28px;
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+      .back:hover {
+        text-decoration: underline;
+      }
+      .status {
+        color: var(--muted);
+      }
+
+      /* the rules, rendered from assignment.md */
+      #rules h1,
+      #rules h2 {
+        font-family: var(--serif);
+        font-weight: 500;
+        text-wrap: balance;
+        letter-spacing: -0.01em;
+        margin: 0;
+      }
+      #rules h1 {
+        font-size: clamp(1.9rem, 5vw, 2.6rem);
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+      #rules h1 + p {
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 58ch;
+      }
+      #rules h1 + p strong {
+        color: var(--ink);
+      }
+      #rules h2 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+        margin: 40px 0 12px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+      }
+      #rules h3 {
+        font: 600 1rem var(--sans);
+        margin: 24px 0 6px;
+      }
+      #rules p {
+        margin: 0 0 12px;
+        max-width: 65ch;
+      }
+      #rules ul,
+      #rules ol {
+        margin: 0 0 14px;
+        padding-left: 22px;
+        max-width: 65ch;
+      }
+      #rules li {
+        margin-bottom: 8px;
+      }
+      #rules li::marker {
+        color: var(--muted);
+      }
+      #rules strong {
+        font-weight: 600;
+      }
+      #rules code {
+        font: 0.88em var(--mono);
+        background: var(--accent-soft);
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
+      .table-wrap {
+        overflow-x: auto;
+        margin: 0 0 16px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      #rules table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.93rem;
+      }
+      #rules th,
+      #rules td {
+        text-align: left;
+        vertical-align: top;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      #rules th {
+        font-weight: 600;
+        background: var(--accent-soft);
+      }
+      #rules tr:last-child td {
+        border-bottom: 0;
+      }
+      #rules mark {
+        background: var(--mark-bg);
+        color: var(--mark-ink);
+        font: 600 0.8em var(--mono);
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="./">← Setup guide</a>
+      <article id="rules" aria-live="polite">
+        <p class="status">Loading the rules…</p>
+      </article>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+    <script>
+      const rules = document.getElementById("rules");
+      // no-cache: always check for a newer assignment.md after an edit
+      fetch("assignment.md", { cache: "no-cache" })
+        .then((r) => {
+          if (!r.ok) throw new Error(r.status);
+          return r.text();
+        })
+        .then((md) => {
+          rules.innerHTML = marked
+            .parse(md)
+            .replace(/\bTBC\b/g, "<mark>TBC</mark>");
+          // let wide tables scroll sideways on phones
+          rules.querySelectorAll("table").forEach((t) => {
+            const wrap = document.createElement("div");
+            wrap.className = "table-wrap";
+            t.before(wrap);
+            wrap.append(t);
+          });
+        })
+        .catch(() => {
+          rules.innerHTML =
+            '<p class="status">Couldn’t load the rules. Refresh the page to try again.</p>';
+        });
+    </script>
+  </body>
+</html>
