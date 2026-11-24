@@ -4,7 +4,7 @@ A one-page guide for students: what to install on a Mac or Windows computer befo
 
 **Live site:** https://winrisred.github.io/pwa-setup-guide/
 
-Everything is in a single file, `index.html`. There's nothing to install or build.
+Everything is in a single file, `index.html`, plus the tab icon (`icon.svg`, with `favicon.ico` and `apple-touch-icon.png` as copies for older browsers and iPhones). There's nothing to install or build.
 
 ## Changing the wording
 
