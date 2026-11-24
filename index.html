@@ -207,6 +207,25 @@
       .primer li {
         margin-bottom: 4px;
       }
+
+      /* why set this up */
+      .why {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px 18px;
+        margin: 0 0 20px;
+      }
+      .why h3 {
+        font: 600 0.95rem var(--sans);
+        margin: 0 0 8px;
+      }
+      .why li {
+        margin-bottom: 4px;
+      }
+      .why p:last-child {
+        margin: 0;
+      }
       kbd {
         font: 500 0.8rem var(--mono);
         border: 1px solid var(--line);
@@ -512,6 +531,40 @@
         ><button type="button" data-os="win" aria-pressed="false">
           Windows
         </button>
+      </div>
+
+      <!-- Shared by all three guides: the script moves it under the open
+           guide's intro, so there's only one copy to edit. -->
+      <div class="why" id="why">
+        <h3>Why set this up?</h3>
+        <p>
+          Together, your team will build a PWA, a website people can install on
+          their phone like an app, and keep improving it until it's live. That
+          only works if every member can work on it, so everyone does this
+          setup on their own computer. It gives you:
+        </p>
+        <ul>
+          <li>
+            <b>Your computer:</b> run the app and try changes before anyone
+            else sees them.
+          </li>
+          <li>
+            <b>GitHub:</b> your team's shared copy of the code, with every
+            change recorded and reviewed.
+          </li>
+          <li>
+            <b>Vercel:</b> puts the app online, and updates it each time the
+            team accepts a change.
+          </li>
+          <li>
+            <b>Claude:</b> helps you write code and understand errors. Your
+            team still checks what it produces.
+          </li>
+        </ul>
+        <p>
+          By the end, each of you should be able to run the project, make a
+          change through GitHub, and help test and publish an update.
+        </p>
       </div>
 
       <!-- ================= MAC ================= -->
@@ -2512,8 +2565,10 @@ sudo ln -sf "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/cod
         intel: document.getElementById("os-intel"),
         win: document.getElementById("os-win"),
       };
+      const why = document.getElementById("why");
       function setOS(os, save) {
         for (const k in panes) panes[k].hidden = k !== os;
+        panes[os].querySelector(".lede").after(why);
         document
           .querySelectorAll(".switch button")
           .forEach((b) => b.setAttribute("aria-pressed", b.dataset.os === os));

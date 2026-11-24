@@ -16,6 +16,7 @@ Everything is in a single file, `index.html`, plus the tab icon (`icon.svg`, wit
 Tips:
 - Turn on word wrap (`⌥ Option + Z`) so long lines fit the window.
 - The Mac, Intel Mac and Windows guides are separate blocks in the file. If a sentence appears in more than one, change it in each.
+- The exception is the **Why set this up?** box: there's one copy, near the top of the file, and it shows in all three guides.
 - The Intel Mac guide downloads fixed versions of Node and the GitHub CLI (Homebrew no longer supports Intel Macs). The links keep working, but bump the version numbers now and then.
 
 ## Previewing before publishing (optional)
