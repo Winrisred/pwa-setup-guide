@@ -45,14 +45,15 @@ Submit on TBC:
 
 ## Team workflow
 
-1. **One repository per team.** One member creates it on GitHub and adds the others as collaborators. If it's private, also add your teacher (GitHub username: TBC).
-2. **Everyone uses their own account and computer.** Your commits are how your contribution shows. Don't share accounts or let one person push for everyone.
-3. **Plan in Issues.** Write each task as a GitHub Issue and assign it to someone, so the team can see who's doing what.
-4. **Work on a branch.** Make changes on a branch, never directly on `main`.
-5. **Open a pull request.** Say what you changed and why. Keep each one small: one feature or one fix.
-6. **Another member reviews it.** They read the changes, try the app on Vercel's preview link, and approve it or ask for changes. Nobody merges their own pull request.
-7. **Merge to publish.** Merging into `main` updates the live app. If something breaks, fix it with a new pull request.
-8. **Spread it out.** Everyone opens and reviews pull requests throughout the project, not just in the last week.
+1. **One public repository per team.** One member creates it on GitHub as a **public** repository and adds the others as collaborators. Public keeps Vercel's free plan working for the whole team, and lets your teacher follow your work.
+2. **Connect it to Vercel once.** The same member imports the repository into Vercel. Then, in the Vercel project, they open **Settings → Deployment Protection** and turn off **Vercel Authentication**, so everyone can open preview links without logging in.
+3. **Everyone uses their own account and computer.** Your commits are how your contribution shows. Don't share accounts or let one person push for everyone. The email from the setup guide's "Your git identity" step must be one of the emails on your GitHub account, or your commits won't show as yours.
+4. **Plan in Issues.** Write each task as a GitHub Issue and assign it to someone, so the team can see who's doing what.
+5. **Work on a branch.** Make changes on a branch, never directly on `main`.
+6. **Open a pull request.** Say what you changed and why. Keep each one small: one feature or one fix.
+7. **Another member reviews it.** They read the changes, try the app on the preview link that Vercel posts on the pull request, and approve it or ask for changes. Nobody merges their own pull request.
+8. **Merge to publish.** Merging into `main` updates the live app. If something breaks, fix it with a new pull request.
+9. **Spread it out.** Everyone opens and reviews pull requests throughout the project, not just in the last week.
 
 ## Using AI
 
