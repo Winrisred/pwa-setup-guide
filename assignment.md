@@ -86,7 +86,7 @@ AI assistants such as Claude, ChatGPT, Kiro or Antigravity can help you explore 
 
 | Part | What we look at | Weight |
 |---|---|---|
-| The product | A working app, live on Vercel, that does what your team set out to do | TBC |
+| The product | A working app, live on Vercel, that does what your team set out to do | 30%|
 | The process | How you organised the work, managed changes and tested your decisions, as the repository shows | TBC |
 | Your contribution | Your own commits and reviews, and how well you explain them | TBC |
 
