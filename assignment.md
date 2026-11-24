@@ -51,9 +51,25 @@ Submit on TBC:
 4. **Plan in Issues.** Write each task as a GitHub Issue and assign it to someone, so the team can see who's doing what.
 5. **Work on a branch.** Make changes on a branch, never directly on `main`.
 6. **Open a pull request.** Say what you changed and why. Keep each one small: one feature or one fix.
-7. **Another member reviews it.** They read the changes, try the app on the preview link that Vercel posts on the pull request, and approve it or ask for changes. Nobody merges their own pull request.
+7. **Another member reviews it.** They read the changes, try the app on the preview link that Vercel posts on the pull request (see below), and approve it or ask for changes. Nobody merges their own pull request.
 8. **Merge to publish.** Merging into `main` updates the live app. If something breaks, fix it with a new pull request.
 9. **Spread it out.** Everyone opens and reviews pull requests throughout the project, not just in the last week.
+
+### How preview links work
+
+Once your repository is connected to Vercel (rule 2), this happens by itself every time someone pushes a branch:
+
+1. GitHub tells Vercel there's new code.
+2. Vercel builds a separate copy of your app from that branch, with its own web address. This copy is a **preview**.
+3. Vercel's bot posts a comment on the pull request with a **Visit Preview** link. It says *Building* at first, then *Ready*.
+4. The reviewer clicks the link and tries the app with the proposed changes, on a laptop or a phone.
+
+Push again, and Vercel builds a new preview and updates the same comment, so the link always shows the latest version.
+
+- **`main` → the live app.** What users see. It only changes when a pull request is merged.
+- **Any other branch → a preview.** For trying changes before they go live. Nobody sees it unless you share the link.
+
+**No Vercel comment on your pull request?** The repository isn't connected to Vercel yet. **The link asks you to log in?** Vercel Authentication is still on. Both are fixed in rule 2.
 
 ## Using AI
 
